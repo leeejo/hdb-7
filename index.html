@@ -6,214 +6,194 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<link href="https://cdn.jsdelivr.net/npm/heroicons@1.0.5/dist/heroicons.min.css" rel="stylesheet">
 
-  <!-- customizing your config -->
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            
-          }
-        }
-      }
+<style type="text/tailwindcss">
+  @layer utilities {
+    .card {
+  border-radius: 5px; /* Optional: Rounded corners */
+  margin: 2rem;
     }
-</script>
-  
-<!-- custom CSS -->
-  <style type="text/tailwindcss">
-    @layer utilities {
-      // Add css code here
-    
-      }
-    }
-  </style>
-  
+  }
+</style>
+
 </head>
 <body>
 
-<div class="w-96 h-96 rounded-2xl shadow flex-col justify-start items-start inline-flex">
-  <div class="self-stretch h-96 px-6 pt-6 pb-8 bg-white shadow flex-col justify-start items-center gap-6 flex">
-    <div class="self-stretch h-14 flex-col justify-start items-center gap-2 flex">
-      <div class="self-stretch text-zinc-800 text-2xl font-bold font-['Cabin'] leading-7">How do you want to split the payment?</div>
-      <div class="self-stretch text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">Please ensure that the CPF payment amount includes the housing grant that has been credited to your CPF Ordinary Account.</div>
+  <div
+  class="shadow max-w-[1192px] flex flex-col space-y-4 items-center mx-auto mt-6 rounded-2xl">
+  <div
+    class="items-stretch shadow bg-white flex w-auto flex-col px-6 py-7 max-md:max-w-full max-md:px-5" >
+    <div class="text-zinc-800 text-2xl font-bold leading-7 max-md:max-w-full">
+      How do you want to split the payment?
     </div>
-    <div class="self-stretch justify-end items-center gap-10 inline-flex">
-      <div class="w-24 flex-col justify-start items-end gap-1 inline-flex">
-        <div class="self-stretch h-6 flex-col justify-start items-start gap-2 flex">
-          <div class="self-stretch justify-start items-start gap-1 inline-flex">
-            <div class="text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">% Split</div>
-          </div>
-        </div>
-      </div>
-      <div class="justify-end items-center gap-4 flex">
-        <div class="w-32 flex-col justify-start items-end gap-1 inline-flex">
-          <div class="flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch justify-start items-start gap-1 inline-flex">
-              <div class="text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">Downpayment</div>
-            </div>
-          </div>
-        </div>
-        <div class="w-32 flex-col justify-start items-end gap-1 inline-flex">
-          <div class="flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch justify-start items-start gap-1 inline-flex">
-              <div class="text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">Stamp Duty</div>
-            </div>
-          </div>
-        </div>
-        <div class="w-32 flex-col justify-start items-end gap-1 inline-flex">
-          <div class="flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch justify-start items-start gap-1 inline-flex">
-              <div class="text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">Legal Fees</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-40 flex-col justify-start items-end gap-1 inline-flex">
-        <div class="self-stretch h-6 flex-col justify-start items-start gap-2 flex">
-          <div class="self-stretch justify-end items-start gap-1 inline-flex">
-            <div class="text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">Total</div>
-          </div>
-        </div>
-      </div>
-      <div class="w-24 opacity-0 flex-col justify-start items-end gap-1 inline-flex">
-        <div class="self-stretch h-6 flex-col justify-start items-start gap-2 flex">
-          <div class="self-stretch justify-end items-start gap-1 inline-flex">
-            <div class="text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">Total</div>
-          </div>
-        </div>
-      </div>
+    <div class="text-zinc-800 text-lg leading-6 mt-2 max-md:max-w-full">
+      Please ensure that the CPF payment amount includes the housing grant that has been credited to your CPF Ordinary Account.
     </div>
-    <div class="self-stretch justify-start items-start gap-10 inline-flex">
-      <div class="grow shrink basis-0 h-12 text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">Fang De Ming’s CPF</div>
-      <div class="h-12 px-4 py-3 bg-white rounded-lg border border-cyan-700 justify-end items-center gap-3 flex">
-        <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">50%</div>
-      </div>
-      <div class="justify-start items-start gap-4 flex">
-        <div class="w-32 h-20 flex-col justify-start items-start gap-1 inline-flex">
-          <div class="self-stretch h-12 flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch py-3 bg-white rounded-lg justify-end items-center gap-3 inline-flex">
-              <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$26,147.50</div>
-            </div>
-          </div>
-          <div class="w-32 text-right text-zinc-600 text-base font-medium font-['Cabin'] leading-snug">Includes Housing Grant: S$7,500.00</div>
-        </div>
-        <div class="h-12 py-3 bg-white rounded-lg justify-end items-center gap-3 flex">
-          <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$5,444.00</div>
-        </div>
-        <div class="h-12 py-3 bg-white rounded-lg justify-end items-center gap-3 flex">
-          <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$181.35</div>
-        </div>
-      </div>
-      <div class="w-40 h-12 text-right text-zinc-800 text-xl font-bold font-['Cabin'] leading-normal">S$31,454.20</div>
-      <div class="w-24 h-12 px-6 justify-start items-center gap-2 flex">
-        <div class="justify-start items-center gap-1 flex">
-          <div class="text-right text-cyan-700 text-lg font-bold font-['Cabin'] leading-normal">Edit</div>
-        </div>
-        <div class="justify-start items-start gap-2.5 flex">
-          <div class="w-4 h-4 relative"></div>
-        </div>
-      </div>
-    </div>
-    <div class="self-stretch justify-start items-start gap-10 inline-flex">
-      <div class="grow shrink basis-0 h-12 text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">Siti Ameerah Binte Muhamad’s CPF</div>
-      <div class="h-12 px-4 py-3 bg-white rounded-lg border border-cyan-700 justify-end items-center gap-3 flex">
-        <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">50%</div>
-      </div>
-      <div class="justify-start items-start gap-4 flex">
-        <div class="w-32 h-20 flex-col justify-start items-start gap-1 inline-flex">
-          <div class="self-stretch h-12 flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch py-3 bg-white rounded-lg justify-end items-center gap-3 inline-flex">
-              <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$26,147.50</div>
-            </div>
-          </div>
-          <div class="w-32 text-right text-zinc-600 text-base font-medium font-['Cabin'] leading-snug">Includes Housing Grant: S$7,500.00</div>
-        </div>
-        <div class="h-12 py-3 bg-white rounded-lg justify-end items-center gap-3 flex">
-          <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$5,444.00</div>
-        </div>
-        <div class="h-12 py-3 bg-white rounded-lg justify-end items-center gap-3 flex">
-          <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$181.35</div>
-        </div>
-      </div>
-      <div class="w-40 h-12 text-right text-zinc-800 text-xl font-bold font-['Cabin'] leading-normal">S$31,454.20</div>
-      <div class="w-24 h-12 px-6 justify-start items-center gap-2 flex">
-        <div class="justify-start items-center gap-1 flex">
-          <div class="text-right text-cyan-700 text-lg font-bold font-['Cabin'] leading-normal">Edit</div>
-        </div>
-        <div class="justify-start items-start gap-2.5 flex">
-          <div class="w-4 h-4 relative"></div>
-        </div>
-      </div>
-    </div>
-    <div class="self-stretch justify-start items-start gap-10 inline-flex">
-      <div class="grow shrink basis-0 h-12 flex-col justify-center items-start gap-1 inline-flex">
-        <div class="self-stretch text-zinc-800 text-lg font-bold font-['Cabin'] leading-normal">Cash</div>
-        <div class="self-stretch text-zinc-600 text-base font-medium font-['Cabin'] leading-snug">eNETS Debit or PayNow</div>
-      </div>
-      <div class="h-12 px-4 py-3 bg-white rounded-lg border border-cyan-700 justify-end items-center gap-3 flex">
-        <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">0%</div>
-      </div>
-      <div class="justify-start items-start gap-4 flex">
-        <div class="w-32 flex-col justify-start items-start gap-1 inline-flex">
-          <div class="self-stretch h-12 flex-col justify-start items-start gap-2 flex">
-            <div class="self-stretch py-3 bg-white rounded-lg justify-end items-center gap-3 inline-flex">
-              <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$0.00</div>
-            </div>
-          </div>
-        </div>
-        <div class="h-12 py-3 bg-white rounded-lg justify-end items-center gap-3 flex">
-          <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$0.00</div>
-        </div>
-        <div class="h-12 py-3 bg-white rounded-lg justify-end items-center gap-3 flex">
-          <div class="text-right text-zinc-800 text-lg font-normal font-['Cabin'] leading-normal">S$0.00</div>
-        </div>
-      </div>
-      <div class="w-40 h-12 text-right text-zinc-800 text-xl font-bold font-['Cabin'] leading-normal">S$0.00</div>
-      <div class="w-24 h-12 px-6 justify-start items-center gap-2 flex">
-        <div class="justify-start items-center gap-1 flex">
-          <div class="text-right text-cyan-700 text-lg font-bold font-['Cabin'] leading-normal">Edit</div>
-        </div>
-        <div class="justify-start items-start gap-2.5 flex">
-          <div class="w-4 h-4 relative"></div>
-        </div>
-      </div>
-    </div>
+
+    <!-- calculator -->
+
+    <div class="card">
+      <div class="grid grid-cols-8 gap-4">
+        <!-- header -->
+        <div class="col-span-2"> </div>
+        <div class="col-span-1">% Split</div>
+        <div class="col-span-1">Downpayment</div>
+        <div class="col-span-1">Stamp Duty</div>
+        <div class="col-span-1">Legal Fees</div>
+        <div class="col-span-1">Total</div>
+        <div class="col-span-1"> </div>
+
+        <!-- applicant 1 -->
+        <div class="col-span-2">Fang De Ming’s CPF</div>
+   
+        <div class="col-span-1"><input type="number" id="input1" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+        <div class="col-span-1"><input type="number" id="input2" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+        <div class="col-span-1"><input type="number" id="input3" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+        <div class="col-span-1"><input type="number" id="input4" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+        
+     
+        <div class="col-span-1">S$31,454.20</div>
+        <div class="col-span-1 text-right">Edit <svg class="float-right w-4 h-4 my-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+          <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
+          <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
+        </svg>
+        <div class="col-span-1 total">0</div>
+         </div>
+      
+
+<!-- applicant 2 -->
+<div class="col-span-2">Siti Ameerah Binte Muhamad’s CPF</div>
+<div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+<div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+<div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+<div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+<div class="col-span-1">S$31,454.20</div>
+<div class="col-span-1 text-right">Edit <svg class="float-right w-4 h-4 my-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+  <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
+  <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
+</svg>
+ </div>
+
+ <!-- applicant 3 -->
+ <div class="col-span-2">Fang Heng Seng CPF</div>
+ <div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+ <div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+ <div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+ <div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+ <div class="col-span-1">S$31,454.20</div>
+ <div class="col-span-1 text-right">Edit <svg class="float-right w-4 h-4 my-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+   <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
+   <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
+ </svg>
   </div>
-  <div class="self-stretch h-40 p-6 bg-neutral-100 flex-col justify-start items-center gap-4 flex">
-    <div class="self-stretch justify-start items-center gap-10 inline-flex">
-      <div class="grow shrink basis-0 text-zinc-800 text-2xl font-bold font-['Cabin'] leading-7">Total Payable</div>
-      <div class="justify-start items-center gap-6 flex">
-        <div class="w-32 text-right text-zinc-800 text-xl font-bold font-['Cabin'] leading-normal">S$52,295.00</div>
-        <div class="w-32 text-right text-zinc-800 text-xl font-bold font-['Cabin'] leading-normal">S$11,250.70</div>
-        <div class="w-32 text-right text-zinc-800 text-xl font-bold font-['Cabin'] leading-normal">S$362.70</div>
-      </div>
-      <div class="w-40 text-right text-zinc-800 text-2xl font-bold font-['Cabin'] leading-7">S$63,545.70</div>
-      <div class="w-24 opacity-0 text-right text-zinc-800 text-2xl font-bold font-['Cabin'] leading-7">S$63,54</div>
+
+
+ <!-- casg -->
+ <div class="col-span-2">Cash <br />
+  eNETS Debit or PayNow</div>
+ <div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+ <div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+ <div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+ <div class="col-span-1"><input type="number" class="w-full border border-[color:var(--Primary-Bright-Teal,#0C8188)] border-solid rounded-lg" >        </div>
+ <div class="col-span-1">S$31,454.20</div>
+ <div class="col-span-1 text-right">Edit <svg class="float-right w-4 h-4 my-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+   <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
+   <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
+ </svg>
+  </div>
+
     </div>
-    <div class="self-stretch h-6 bg-zinc-300 rounded-3xl justify-start items-start inline-flex">
-      <div class="grow shrink basis-0 self-stretch bg-teal-900 border-2 border-neutral-100"></div>
-      <div class="grow shrink basis-0 self-stretch bg-cyan-700 border-2 border-neutral-100"></div>
+</div>
+    
+<!-- visual bar -->
+  <div
+    class="items-stretch bg-neutral-100 flex w-auto flex-col p-6 max-md:max-w-full max-md:px-5"
+  >
+    <div
+      class="items-center flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+    >
+      <div
+        class="text-zinc-800 text-2xl font-bold leading-7 self-stretch grow shrink basis-auto"
+      >
+        Total Payable
+      </div>
+      <div
+        class="items-stretch flex justify-between gap-5 my-auto pr-16 max-md:max-w-full max-md:flex-wrap max-md:pr-5"
+      >
+        <div
+          class="text-zinc-800 text-right text-xl font-bold leading-6 grow whitespace-nowrap"
+        >
+          S$52,295.00
+        </div>
+        <div class="text-zinc-800 text-right text-xl font-bold leading-6">
+          S$11,250.70
+        </div>
+        <div
+          class="text-zinc-800 text-right text-xl font-bold leading-6 grow whitespace-nowrap"
+        >
+          S$362.70
+        </div>
+      </div>
+      <div
+        class="text-zinc-800 text-right text-2xl font-bold leading-7 self-stretch whitespace-nowrap"
+      >
+        S$63,545.70
+      </div>
     </div>
-    <div class="self-stretch justify-start items-start gap-6 inline-flex">
-      <div class="justify-start items-center gap-2 flex">
-        <div class="w-4 h-4 bg-teal-900 rounded-full"></div>
-        <div class="text-zinc-800 text-base font-bold font-['Cabin'] leading-snug">Fang De Ming’s share</div>
-        <div class="text-zinc-600 text-base font-medium font-['Cabin'] leading-snug">S$31,454.20</div>
+    <div
+      class="items-stretch bg-zinc-300 flex justify-between gap-0 mt-4 rounded-[40px] max-md:max-w-full max-md:flex-wrap"
+    >
+      <div
+        class="border-[color:var(--Neutral-Light-Light-Grey,#F7F7F7)] bg-teal-900 flex w-[572px] shrink-0 max-w-full h-6 flex-col border-2 border-solid"
+      ></div>
+      <div
+        class="border-[color:var(--Neutral-Light-Light-Grey,#F7F7F7)] bg-cyan-700 flex w-[572px] shrink-0 max-w-full h-6 flex-col border-2 border-solid"
+      ></div>
+    </div>
+    <div
+      class="items-stretch content-start flex-wrap flex justify-between gap-5 mt-4 pr-20 max-md:max-w-full max-md:pr-5"
+    >
+      <div class="items-center flex gap-2">
+        <div class="flex w-4 shrink-0 h-4 flex-col my-auto rounded-[50%]"></div>
+        <div class="text-zinc-800 text-base font-bold leading-6">
+          Fang De Ming’s share
+        </div>
+        <div
+          class="text-zinc-600 text-base font-medium leading-6 self-stretch grow whitespace-nowrap"
+        >
+          S$31,454.20
+        </div>
       </div>
-      <div class="justify-start items-center gap-2 flex">
-        <div class="w-4 h-4 bg-cyan-700 rounded-full"></div>
-        <div class="text-zinc-800 text-base font-bold font-['Cabin'] leading-snug">Siti Ameerah Binte Muhamad’s share</div>
-        <div class="text-zinc-600 text-base font-medium font-['Cabin'] leading-snug">S$31,454.20</div>
+      <div class="items-center flex gap-2">
+        <div class="flex w-4 shrink-0 h-4 flex-col my-auto rounded-[50%]"></div>
+        <div
+          class="text-zinc-800 text-base font-bold leading-6 self-stretch grow shrink basis-auto"
+        >
+          Siti Ameerah Binte Muhamad’s share
+        </div>
+        <div
+          class="text-zinc-600 text-base font-medium leading-6 self-stretch whitespace-nowrap"
+        >
+          S$31,454.20
+        </div>
       </div>
-      <div class="justify-start items-center gap-2 flex">
-        <div class="w-4 h-4 bg-teal-300 rounded-full"></div>
-        <div class="text-zinc-800 text-base font-bold font-['Cabin'] leading-snug">Cash</div>
-        <div class="text-zinc-600 text-base font-medium font-['Cabin'] leading-snug">0%</div>
+      <div class="items-center flex gap-2">
+        <div class="flex w-4 shrink-0 h-4 flex-col my-auto rounded-[50%]"></div>
+        <div class="text-zinc-800 text-base font-bold leading-6 self-stretch">
+          Cash
+        </div>
+        <div
+          class="text-zinc-600 text-base font-medium leading-6 self-stretch grow whitespace-nowrap"
+        >
+          0%
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+  
   
 </body>
 </html>
