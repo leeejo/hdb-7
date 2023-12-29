@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Side bar v2</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<link href="https://cdn.jsdelivr.net/npm/heroicons@1.0.5/dist/heroicons.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+</head>
+<body>
+
+
+    <div class="items-center bg-zinc-300 flex flex-col">
+        <div
+          class="flex-col fill-zinc-100 overflow-hidden self-stretch relative flex min-h-[25px] items-start gap-1 px-20 py-1.5 max-md:max-w-full max-md:flex-wrap max-md:px-5"
+        >
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/e947e6f6ce3b6f708386f9e5a17801afb0ef06e6ad235a28863752cbfc0c25b8?"
+            class="absolute h-full w-full object-cover object-center inset-0"
+          />
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/9fcb8e7869767a11ce51c0426271b5f28cad087843775f91eb6ee564f8d40092?"
+            class="aspect-[0.81] object-contain object-center w-[13px] overflow-hidden self-stretch shrink-0 max-w-full"
+          />
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/0542e75ced9124b6c5998a40889624ae772364d19517079cd46770b4e2872bf8?"
+            class="aspect-[19.64] object-contain object-center w-[216px] fill-zinc-800 overflow-hidden self-center shrink-0 max-w-full my-auto"
+          />
+          <div class="relative text-sky-700 text-xs font-medium underline self-start">
+            How to identify
+          </div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/e7184b6bd69f773cfecdc9181be46350b752d39a77f7f4c2a95f16f7b020700e?"
+            class="aspect-[2] object-contain object-center w-2 fill-cyan-700 overflow-hidden self-center shrink-0 max-w-full my-auto"
+          />
+        </div>
+        <div
+          class="justify-between items-center bg-white self-stretch flex w-full gap-5 px-20 max-md:max-w-full max-md:flex-wrap max-md:px-5"
+        >
+          <div
+            class="justify-between items-stretch flex gap-5 my-auto max-md:max-w-full max-md:flex-wrap"
+          >
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/310bfc31f1202f2258f9aeffd61fb58305e33ad94ec0d0a86ca662a055b9fb00?"
+              class="aspect-[4.14] object-contain object-center w-[207px] overflow-hidden shrink-0 max-w-full"
+            />
+            <div
+              class="justify-center items-stretch self-center flex gap-4 my-auto max-md:max-w-full max-md:flex-wrap"
+            >
+              <div
+                class="text-zinc-800 text-center text-lg font-bold leading-6 whitespace-nowrap"
+              >
+                Home
+              </div>
+              <div class="text-zinc-800 text-center text-lg font-bold leading-6">
+                My Flat Dashboard
+              </div>
+              <div class="text-zinc-800 text-center text-lg font-bold leading-6">
+                Finding a Flat
+              </div>
+              <div class="text-zinc-800 text-center text-lg font-bold leading-6">
+                My Profile
+              </div>
+              <div class="text-zinc-800 text-center text-lg font-bold leading-6">
+                Calculator
+              </div>
+              <div
+                class="text-zinc-800 text-center text-lg font-bold leading-6 grow whitespace-nowrap"
+              >
+                Calculator
+              </div>
+            </div>
+          </div>
+          <div class="justify-between items-stretch self-stretch flex gap-2">
+            <div class="justify-end flex gap-2 py-8 items-start">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ef7d2535b81eb6809d35940a529627b6f44ade0f2f086259a9aa05bb99688143?"
+                class="aspect-square object-contain object-center w-[22px] justify-center items-center overflow-hidden shrink-0 max-w-full"
+              />
+              <div
+                class="text-zinc-800 text-right text-lg font-bold leading-6 self-stretch"
+              >
+                Profile
+              </div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/6999a419260607d592c2c84b3896c7866190d3950c46c694af3c265b9a65f273?"
+                class="aspect-square object-contain object-center w-4 overflow-hidden self-center shrink-0 max-w-full my-auto"
+              />
+            </div>
+            <div
+              class="justify-center items-center bg-cyan-700 flex grow basis-[0%] flex-col px-3 py-8"
+            >
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b780344e83f1dbdb5740f62e7b5bf0f12b6aab4aa379ec389383e42f2f72920?"
+                class="aspect-square object-contain object-center w-6 overflow-hidden"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="items-stretch self-stretch flex w-full justify-between gap-5 pt-6 pb-10 px-20 max-md:max-w-full max-md:flex-wrap max-md:px-5"
+        >
+          <div class="flex flex-col items-start max-md:max-w-full">
+            <div class="items-center flex gap-0.5">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/6f1ffaece47810bafa31c68ce781757805c7546ce250cb1ba5ca143300135fef?"
+                class="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full my-auto"
+              />
+              <div
+                class="text-cyan-700 text-base font-bold leading-6 self-stretch grow whitespace-nowrap"
+              >
+                Dashboard
+              </div>
+            </div>
+            <div
+              class="text-zinc-800 text-5xl font-bold leading-[56.16px] self-stretch mt-6 max-md:max-w-full max-md:text-4xl"
+            >
+              My Flat Application
+            </div>
+            <div
+              class="text-zinc-800 text-base font-medium leading-6 self-stretch mt-6 max-md:max-w-full"
+            >
+              For purchased flat at Blk 321 Toa Payoh Ave 4 #12-345 Singapore 654321
+            </div>
+          </div>
+          <div class="justify-center items-stretch flex gap-2 mt-4 p-px self-start">
+            <div
+              class="text-white text-center text-base font-bold leading-6 whitespace-nowrap border border-[color:var(--Neutral-white,#FFF)] shadow-sm bg-cyan-700 aspect-[1.1904761904761905] justify-center items-stretch px-5 py-4 rounded-none border-solid"
+            >
+              A
+            </div>
+            <div
+              class="text-white text-center text-2xl font-bold leading-7 whitespace-nowrap border border-[color:var(--Neutral-white,#FFF)] shadow-sm bg-cyan-700 aspect-[1.1904761904761905] justify-center items-stretch px-5 py-3.5 rounded-none border-solid"
+            >
+              A
+            </div>
+          </div>
+        </div>
+        <div
+          class="justify-center bg-neutral-100 self-center w-[1344px] max-w-full pl-8 pr-14 rounded-2xl max-md:px-5"
+        >
+          <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+            <div
+              class="flex flex-col items-stretch w-[29%] max-md:w-full max-md:ml-0"
+            >
+              <div
+                class="sidebar max-w-[356px] shadow bg-slate-100 flex flex-col my-8 mx-auto pl-2 py-9 rounded-2xl max-md:mt-10 h-screen max-h-[680px] overflow-scroll"
+                x-data="{ isSticky: false }"
+       :class="{ 'fixed top-0': isSticky }"
+       @scroll.window="isSticky = window.scrollY >= 390"
+              >
+                <div class="text-zinc-800 text-2xl font-bold leading-7 self-stretch">
+                  Home Buying Journey
+                </div>
+                <div
+                  class="items-stretch bg-slate-100 self-stretch flex w-full flex-col justify-center mt-4 px-4"
+                >
+                  <div
+                    class="items-center bg-white flex justify-between gap-4 p-4 rounded-2xl"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/52c01e8632b4cad5d27e90616176b8c49243117a8c3b10d58c24ff06d8ad4a46?"
+                      class="aspect-square object-contain object-center w-[22px] justify-center items-center overflow-hidden shrink-0 max-w-full my-auto"
+                    />
+                    <div
+                      class="text-cyan-700 text-lg font-bold leading-6 self-stretch grow shrink basis-auto"
+                    >
+                      Preliminary HDB Flat Eligibility (HFE) Check
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/943d009fa58ea49e0e693ca155a951f7aa3f1a32b39a730871f6988ea4e18906?"
+                    class="aspect-[0.5] object-contain object-center w-6 items-center overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 grow shrink basis-auto"
+                  >
+                    Apply for a HDB Flat Eligibility (HFE) Letter
+                  </div>
+                </div>
+                <div
+                  class="items-stretch bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/b66ceeaa42889380523cee42d892e762d3616b6ec83969f31e3719ee33a85a40?"
+                    class="aspect-square object-contain object-center w-6 justify-center items-center overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Apply for Sales Launch
+                  </div>
+                </div>
+                <div
+                  class="items-stretch bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/da6e1faf23ce54a6437c06f5fdc6dc0a59a7fe2940396b555f29e9ee252934c6?"
+                    class="aspect-square object-contain object-center w-6 justify-center items-center overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Receive Your Ballot Results
+                  </div>
+                </div>
+                <div
+                  class="items-center bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/1befe144ad054a805f3d8db53213bfa6f194873dd2d151280e88dfd99a6f999f?"
+                    class="aspect-square object-contain object-center w-6 justify-center items-center overflow-hidden shrink-0 max-w-full my-auto"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 self-stretch grow shrink basis-auto"
+                  >
+                    Prepare for Selection Appointment
+                  </div>
+                </div>
+                <div
+                  class="items-stretch bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/62d5230e72b6b3c9469f78a9ba5eeb7a5af25d55e412c49c7ace4409152d0322?"
+                    class="aspect-square object-contain object-center w-6 justify-center items-center overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Attend Selection Appointment
+                  </div>
+                </div>
+                <div
+                  class="items-center bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/200dff4ca88f51ed6291cc42410a4ea2bc3ff043a0f18018c68790aaaa6b633d?"
+                    class="aspect-square object-contain object-center w-6 justify-center items-center overflow-hidden shrink-0 max-w-full my-auto"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 self-stretch grow shrink basis-auto"
+                  >
+                    Prepare to Sign Agreement for Lease
+                  </div>
+                </div>
+                <div
+                  class="items-stretch bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/7606113569ab7685d6f154b50bf15bf8ee23e94169e45913cfecfea02c509beb?"
+                    class="aspect-[0.5] object-contain object-center w-6 items-center overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 grow shrink basis-auto"
+                  >
+                    Attend Appointment to Sign Agreement for Lease
+                  </div>
+                </div>
+                <div
+                  class="items-stretch bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/7c69b2b6333d63602026af77c777f81a9709579b051d8f6331d8d39ae7ce9dac?"
+                    class="aspect-square object-contain object-center w-6 justify-center items-center overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Update Particulars
+                  </div>
+                </div>
+                <div
+                  class="items-stretch bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5d5070c7553529b5705dbaea0884440429454c23d3d14d85895f32a0998dfbb?"
+                    class="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div
+                    class="text-teal-900 text-lg font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Prepare for Key Collection
+                  </div>
+                </div>
+                <div
+                  class="items-center bg-slate-100 self-stretch flex justify-between gap-4 px-8 py-4 max-md:px-5"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/c4dc8b292494215a386c02e0b8f8ecf7c97b75775ae277934c09bedc74817fe9?"
+                    class="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full my-auto"
+                  />
+                  <div
+                    class="text-neutral-400 text-lg font-bold leading-6 self-stretch grow shrink basis-auto"
+                  >
+                    Attend Appointment to Collect Keys
+                  </div>
+                </div>
+                <div
+                  class="border-t-[color:var(--Primary-Bright-Teal,#0C8188)] self-center flex w-[308px] shrink-0 max-w-full h-px flex-col border-t border-solid"
+                ></div>
+                <div
+                  class="justify-between shadow-sm bg-white self-center flex w-[297px] max-w-full flex-col mt-8 p-4 rounded-2xl items-start"
+                >
+                  <div class="self-stretch flex justify-between gap-0 items-start">
+                    <div class="items-stretch flex grow basis-[0%] flex-col">
+                      <div class="bg-teal-300 flex shrink-0 h-[3px] flex-col"></div>
+                      <div
+                        class="text-zinc-800 text-base font-bold leading-5 whitespace-nowrap mt-2"
+                      >
+                        Flat Details
+                      </div>
+                    </div>
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/bbf22850b01fd9e0879b4020bc01961a54aaa5e46d7b61483a915aa98b327c53?"
+                      class="aspect-square object-contain object-center w-12 justify-center items-center overflow-hidden self-stretch shrink-0 max-w-full"
+                    />
+                  </div>
+                  <div
+                    class="self-stretch text-zinc-600 text-base font-medium leading-6 mt-2"
+                  >
+                    Access flat details, building progress, and documents reviewed
+                    throughout your buying journey.
+                  </div>
+                  <div class="text-cyan-700 text-base font-medium leading-6 mt-6">
+                    Go to Flat Details
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-stretch w-[71%] ml-5 max-md:w-full max-md:ml-0"
+            >
+              <div
+                class="items-stretch flex grow flex-col pb-12 max-md:max-w-full max-md:mt-6"
+              >
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/124a45ba17cbd4edef7120508096fa205a5e78bb2c68b86009e2ec56021a0300?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-16 max-md:mb-10"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch shadow bg-white flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-zinc-800 text-xl font-bold leading-6 grow shrink basis-auto my-auto"
+                      >
+                        Preliminary HDB Flat Eligibility (HFE) Check
+                      </div>
+                      <div
+                        class="text-zinc-800 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-green-100 self-stretch px-2 py-1.5"
+                      >
+                        Done on 16 Sep 2022
+                      </div>
+                    </div>
+                    <div
+                      class="text-zinc-800 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      The preliminary outcome of your eligibility check to:
+                      <br />
+                      · Buy a new or resale flat
+                      <br />
+                      · Receive CPF housing grants
+                      <br />
+                      · Take up an HDB housing loan
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/feaef31e266bf8d2492d9d520dee13f7e713ebcb48972c4b82ac8dc1d3338e33?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-5"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch shadow bg-white flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-zinc-800 text-xl font-bold leading-6 grow shrink basis-auto my-auto"
+                      >
+                        Apply for a HDB Flat Eligibility (HFE) Letter
+                      </div>
+                      <div
+                        class="text-zinc-800 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-green-100 self-stretch px-2 py-1.5"
+                      >
+                        Done on 18 Sep 2022
+                      </div>
+                    </div>
+                    <div
+                      class="text-zinc-800 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Your application for an HFE letter has been approved. The HFE
+                      letter is valid until 3 Sep 2023.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/f7b97f805e11a2fbd45975bc47fd0f02fd9ae0a1c5bcd185615bc4cc69dd5915?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-5"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch shadow bg-white flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div class="text-zinc-800 text-xl font-bold leading-6 my-auto">
+                        Apply for Sales Launch
+                      </div>
+                      <div
+                        class="text-zinc-800 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-green-100 self-stretch px-2 py-1.5"
+                      >
+                        Done on 21 Nov 2022
+                      </div>
+                    </div>
+                    <div
+                      class="text-zinc-800 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Your flat application under the Mar 2023 Build-To-Order (BTO)
+                      exercise has been processed.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/f64dce0de93f44f7b79b552b3a433aada1aaceb2f52e8a229a92f533c5725ca2?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-5"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch shadow bg-white flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-zinc-800 text-xl font-bold leading-6 w-[252px] my-auto"
+                      >
+                        Receive Your Ballot Results
+                      </div>
+                      <div
+                        class="text-zinc-800 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-green-100 self-stretch px-2 py-1.5"
+                      >
+                        Done on 5 Jan 2023
+                      </div>
+                    </div>
+                    <div
+                      class="text-zinc-800 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Your application has been balloted with a queue position of 228
+                      for a 4-room flat in Toa Payoh.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/186edbbd369205d1432c46cee141f63b440476fb537fec7d430de4b3168e7d9a?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-11 max-md:mb-10"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch shadow bg-white flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-zinc-800 text-xl font-bold leading-6 grow shrink basis-auto my-auto"
+                      >
+                        Prepare for Selection Appointment
+                      </div>
+                      <div
+                        class="text-zinc-800 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-green-100 self-stretch px-2 py-1.5"
+                      >
+                        Done on 8 March 2023
+                      </div>
+                    </div>
+                    <div
+                      class="text-cyan-700 text-lg leading-6 underline mt-4 max-md:max-w-full"
+                    >
+                      Prepare for your appointment by going through the flat booking
+                      materials and placing your preferred units on a
+                      <span class="font-bold underline text-cyan-700">watchlist</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/94844584b91703ea23f3b82bfc0ffcb90b65da010cc609f7d6ec06d53dd016d2?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-5"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch shadow bg-white flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-zinc-800 text-xl font-bold leading-6 grow shrink basis-auto my-auto"
+                      >
+                        Attend Selection Appointment
+                      </div>
+                      <div
+                        class="text-zinc-800 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-green-100 self-stretch px-2 py-1.5"
+                      >
+                        Done on 20 March 2023
+                      </div>
+                    </div>
+                    <div
+                      class="text-zinc-800 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      You have selected and paid the option fee for your unit
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12 max-md:hidden"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1350292265c915ebb115a7b5522f2e593d3b21422aeafcebe43f8afec761584?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-96 max-md:mb-10"
+                    />
+                  </div>
+                  <div
+                    class="items-start border border-[color:var(--Primary-Bright-Teal,#0C8188)] shadow-lg bg-white flex grow basis-[0%] flex-col mt-8 px-6 py-7 rounded-xl border-solid self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center self-stretch flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-zinc-800 text-2xl font-bold leading-7 grow shrink basis-auto my-auto"
+                      >
+                        Prepare to Sign Agreement for Lease
+                      </div>
+                      <div
+                        class="text-zinc-800 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-amber-400 self-stretch px-2 py-1.5"
+                      >
+                        Due on 10 Sep 2023
+                      </div>
+                    </div>
+                    <div
+                      class="self-stretch text-zinc-800 text-lg leading-6 mt-8 max-md:max-w-full"
+                    >
+                      Complete your financial plan and pay the downpayment and fees.
+                      After payment is processed, you’ll be invited to sign the lease
+                      agreement.
+                    </div>
+                    <div
+                      class="text-zinc-800 text-lg font-bold leading-6 self-stretch mt-4 max-md:max-w-full"
+                    >
+                      Decide on admin and financial matters including:
+                      <br />
+                      Manner of holding
+                      <br />
+                      Financial plan
+                    </div>
+                    <div
+                      class="self-stretch text-neutral-400 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Endorse financial plan (all applicants must do this)
+                    </div>
+                    <div
+                      class="text-neutral-400 text-lg leading-6 self-stretch mt-4 max-md:max-w-full"
+                    >
+                      Pay any cash balance by PayNow or eNETS Debit
+                    </div>
+                    <div
+                      class="items-stretch self-stretch bg-slate-100 flex flex-col mt-8 p-6 rounded-lg max-md:max-w-full max-md:px-5"
+                    >
+                      <div
+                        class="text-zinc-800 text-xl font-bold leading-6 max-md:max-w-full"
+                      >
+                        What you need to decide
+                      </div>
+                      <div
+                        class="text-cyan-700 text-lg leading-6 underline mt-4 max-md:max-w-full"
+                      >
+                        <ul>
+                          <li>
+                            Your preferred
+                            <span class="font-bold underline text-cyan-700">
+                              manner of holding
+                            </span>
+                          </li>
+                          <li></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div
+                      class="text-white text-center text-base font-medium leading-6 whitespace-nowrap items-stretch bg-cyan-700 justify-center mt-8 px-12 py-3.5 rounded-xl self-start max-md:px-5"
+                    >
+                      Start Financial Plan
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/2c17737ae970d3a6e460e9ff72244a804a4008e2c9772eedb81fe060f007f61d?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-5"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch border border-[color:var(--Neutral-Grey,#D9D9D9)] flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl border-solid self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-neutral-400 text-xl font-bold leading-6 grow shrink basis-auto my-auto max-md:max-w-full"
+                      >
+                        Attend Appointment to Sign Agreement for Lease
+                      </div>
+                      <div
+                        class="text-neutral-400 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-gray-200 self-stretch px-2 py-1.5"
+                      >
+                        Upcoming
+                      </div>
+                    </div>
+                    <div
+                      class="text-neutral-400 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Sign your Agreement for Lease in a virtual appointment.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/4f80b9bf2723689e223357d3ec8a44f432b0decef1c2230f1e44751e54b3a35c?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-5"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch border border-[color:var(--Neutral-Grey,#D9D9D9)] flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl border-solid self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-neutral-400 text-xl font-bold leading-6 my-auto"
+                      >
+                        Update Particulars
+                      </div>
+                      <div
+                        class="text-neutral-400 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-gray-200 self-stretch px-2 py-1.5"
+                      >
+                        Upcoming
+                      </div>
+                    </div>
+                    <div
+                      class="text-neutral-400 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Update all applicants’ particulars so that we can prepare your
+                      flat for key collection.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/56eea83283ce4237aea216f5e0ac2d2356562d02e057d2fda6f5cabb9e4c24c6?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-11 max-md:mb-10"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch border border-[color:var(--Neutral-Grey,#D9D9D9)] flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl border-solid self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-neutral-400 text-xl font-bold leading-6 w-[242px] my-auto"
+                      >
+                        Prepare for Key Collection
+                      </div>
+                      <div
+                        class="text-neutral-400 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-gray-200 self-stretch px-2 py-1.5"
+                      >
+                        Upcoming
+                      </div>
+                    </div>
+                    <div
+                      class="text-neutral-400 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Complete your financial plan and make payment for your flat.
+                      After the payment is processed, you’ll be invited to collect
+                      they keys to your new home.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/66f74bc0199740820a170faae952aca9692145ae563795640138947747bd6389?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-5"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch border border-[color:var(--Neutral-Grey,#D9D9D9)] flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl border-solid self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-neutral-400 text-xl font-bold leading-6 grow shrink basis-auto my-auto max-md:max-w-full"
+                      >
+                        Attend Appointment to Sign Key Collection Documents
+                      </div>
+                      <div
+                        class="text-neutral-400 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-gray-200 self-stretch px-2 py-1.5"
+                      >
+                        Upcoming
+                      </div>
+                    </div>
+                    <div
+                      class="text-neutral-400 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Sign the legal documents to your flat in a virtual appointment
+                      before collecting your keys.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="items-stretch flex justify-between gap-5 mb-[590px] max-md:max-w-full max-md:flex-wrap max-md:mb-10"
+                >
+                  <div
+                    class="items-center flex basis-[0%] flex-col justify-center py-12"
+                  >
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d91a7c02d0f545d3f4057e95acf31059ead94efa4a6a7df9e4774f75eb2b677?"
+                      class="aspect-square object-contain object-center w-6 overflow-hidden mt-2.5 mb-5"
+                    />
+                  </div>
+                  <div
+                    class="items-stretch border border-[color:var(--Neutral-Grey,#D9D9D9)] flex grow basis-[0%] flex-col mt-8 p-6 rounded-xl border-solid self-end max-md:max-w-full max-md:px-5"
+                  >
+                    <div
+                      class="justify-between items-center flex gap-5 max-md:max-w-full max-md:flex-wrap"
+                    >
+                      <div
+                        class="text-neutral-400 text-xl font-bold leading-6 grow shrink basis-auto my-auto"
+                      >
+                        Attend Appointment to Collect Keys
+                      </div>
+                      <div
+                        class="text-neutral-400 text-sm font-medium leading-5 whitespace-nowrap justify-center items-stretch rounded bg-gray-200 self-stretch px-2 py-1.5"
+                      >
+                        Upcoming
+                      </div>
+                    </div>
+                    <div
+                      class="text-neutral-400 text-lg leading-6 mt-4 max-md:max-w-full"
+                    >
+                      Collect the keys to your new home.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="items-stretch self-stretch shadow-sm bg-neutral-100 flex justify-between gap-2 px-20 py-4 max-md:max-w-full max-md:flex-wrap max-md:px-5"
+        >
+          <div class="items-stretch flex justify-between gap-1">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/2a9a76fc90e175e9d75b8297492eb9851dd474dbb8467e3d2931b96ae7d1219b?"
+              class="aspect-square object-contain object-center w-6 justify-center items-center overflow-hidden shrink-0 max-w-full"
+            />
+            <div
+              class="text-zinc-600 text-base font-bold leading-6 grow whitespace-nowrap"
+            >
+              Get Help
+            </div>
+          </div>
+          <div class="items-stretch flex justify-between gap-1">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/19ee95c2b79768d247ca2c11c314e0b512267ca9a0af3ee8192f22db91c562ef?"
+              class="aspect-square object-contain object-center w-6 justify-center items-center overflow-hidden shrink-0 max-w-full"
+            />
+            <div
+              class="text-zinc-600 text-base font-bold leading-6 grow whitespace-nowrap"
+            >
+              Feedback
+            </div>
+          </div>
+        </div>
+        <div
+          class="items-stretch self-stretch bg-zinc-800 flex w-full flex-col px-20 py-12 max-md:max-w-full max-md:px-5"
+        >
+          <div
+            class="text-white text-3xl font-bold leading-8 ml-3.5 mr-5 max-md:max-w-full max-md:mr-2.5"
+          >
+            Housing & Development Board
+          </div>
+          <div
+            class="justify-between items-start flex gap-5 ml-3.5 mr-5 mt-6 pl-20 max-md:max-w-full max-md:flex-wrap max-md:mr-2.5 max-md:pl-5"
+          >
+            <div
+              class="text-white text-lg leading-6 self-center whitespace-nowrap my-auto"
+            >
+              Contact us
+            </div>
+            <div class="text-white text-lg leading-6 self-center my-auto">
+              Feedback
+            </div>
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/f136c15eb035af3058a0bd1c439d7de6e14e2d034a42d58e9ed6a27ef26d2273?"
+              class="aspect-[0.04] object-contain object-center w-px stroke-[1px] stroke-neutral-400 overflow-hidden self-stretch shrink-0 max-w-full"
+            />
+            <img
+              loading="lazy"
+              srcset="..."
+              class="aspect-[11.44] object-contain object-center w-[309px] overflow-hidden self-start"
+            />
+          </div>
+          <div
+            class="text-white text-right text-lg leading-6 w-[1240px] ml-3.5 mr-5 mt-6 max-md:max-w-full max-md:mr-2.5"
+          >
+            Subscribe to HDB eAlert Service
+            <br />
+            <br />
+            Download Mobile @ HDB
+          </div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf4409b9a3066b972f2a99d4a9939d99aad58bf1e27aa97b2a3d0cf9982ca091?"
+            class="aspect-[1254] object-contain object-center w-full stroke-[1px] stroke-neutral-400 overflow-hidden mt-6 mx-3.5 max-md:max-w-full max-md:mr-2.5"
+          />
+          <div
+            class="justify-between items-stretch flex gap-5 mt-6 mb-2.5 mx-3.5 max-md:max-w-full max-md:flex-wrap max-md:mr-2.5"
+          >
+            <div class="items-start flex gap-2.5 max-md:max-w-full max-md:flex-wrap">
+              <div
+                class="text-white text-lg leading-6 self-center grow whitespace-nowrap my-auto"
+              >
+                Report Vulnerability
+              </div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/4f4245f97a9f0c3b3b22c3e0f97dff78cd822426b5d45257b6976c2846c11b85?"
+                class="aspect-[1.07] object-contain object-center w-[15px] overflow-hidden shrink-0 max-w-full self-start"
+              />
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+                class="aspect-[0.05] object-contain object-center w-px stroke-[1px] stroke-neutral-400 overflow-hidden self-center shrink-0 max-w-full my-auto"
+              />
+              <div class="text-white text-lg leading-6">Privacy Statement</div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+                class="aspect-[0.05] object-contain object-center w-px stroke-[1px] stroke-neutral-400 overflow-hidden self-center shrink-0 max-w-full my-auto"
+              />
+              <div class="text-white text-lg leading-6">Terms of Use</div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+                class="aspect-[0.05] object-contain object-center w-px stroke-[1px] stroke-neutral-400 overflow-hidden self-center shrink-0 max-w-full my-auto"
+              />
+              <div class="text-white text-lg leading-6 self-stretch">Sitemap</div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+                class="aspect-[0.05] object-contain object-center w-px stroke-[1px] stroke-neutral-400 overflow-hidden self-center shrink-0 max-w-full my-auto"
+              />
+              <div
+                class="text-white text-lg leading-6 self-stretch grow whitespace-nowrap"
+              >
+                Site Requirements
+              </div>
+            </div>
+            <div class="text-white text-lg leading-6 grow whitespace-nowrap">
+              © 2023, Government of Singapore
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    </body>
+    </html>
