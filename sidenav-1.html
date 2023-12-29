@@ -155,9 +155,9 @@
     <!-- sidebar -->
   
       <div
-      class="sidebar max-w-[356px] ditems-center shadow bg-slate-100 flex basis-[0%] flex-col pt-8 pb-12 rounded-l-2xl p-4"
+      class="sidebar max-w-[356px] ditems-center shadow bg-slate-100 flex basis-[0%] flex-col pt-8 pb-12 rounded-l-2xl p-4 "
         x-data="{ isSticky: false }"
-       :class="{ 'fixed top-0': isSticky }"
+       :class="{ 'fixed top-0 max-h-screen overflow-scroll': isSticky }"
        @scroll.window="isSticky = window.scrollY >= 390"
       >
         <div class="text-teal-900 text-2xl font-bold leading-7 self-stretch">
