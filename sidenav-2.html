@@ -157,9 +157,9 @@
               class="flex flex-col items-stretch w-[29%] max-md:w-full max-md:ml-0"
             >
               <div
-                class="sidebar max-w-[356px] shadow bg-slate-100 flex flex-col my-8 mx-auto pl-2 py-9 rounded-2xl max-md:mt-10 h-screen max-h-[680px] overflow-scroll"
+                class="sidebar max-w-[356px] shadow bg-slate-100 flex flex-col my-8 mx-auto pl-2 py-9 rounded-2xl max-md:mt-10 overflow-scroll"
                 x-data="{ isSticky: false }"
-       :class="{ 'fixed top-0': isSticky }"
+       :class="{ 'fixed top-0 max-h-[680px]': isSticky }"
        @scroll.window="isSticky = window.scrollY >= 390"
               >
                 <div class="text-zinc-800 text-2xl font-bold leading-7 self-stretch">
