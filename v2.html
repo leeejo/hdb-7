@@ -71,23 +71,11 @@
                   <a href="v1.html" class="text-cyan-700 text-base font-medium leading-6">
                     %
                   </a>
-                  <div class="text-cyan-700 text-base font-medium leading-6">
-                    Clear all
-                  </div>
-                  <button x-on:click="localStorage.setItem('nameList', '[]'); localStorage.setItem('paymentFixed', '{}'); window.location.reload();" class="text-cyan-700 text-base font-medium leading-6">
+                  
+                  <button x-on:click="handleReset" class="text-cyan-700 text-base font-medium leading-6">
                     Reset
                   </button>
-                  <button x-on:click = " addingPayee = true;" class="text-cyan-700 text-base font-medium leading-6">
-                    Add Payee
-                  </button>
-                  <div x-show="addingPayee" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div @click.away="addingPayee = false" class="p-4 bg-white rounded-lg shadow-xl">
-                      <input type="text" id = "nameInputField" class="w-64 p-2 border-2 border-blue-500 rounded-md" placeholder="Enter name.">
-                      <button id = "addedPayee" @click="addingPayee= false" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md">
-                        Submit
-                      </button>
-                    </div>
-                  </div>
+                  
 
                 </span>
               </div>
@@ -242,16 +230,7 @@
                     <span class="font-bold text-black text-2xl">Paying with cash</span> <span class = "text-l ml-2">(eNETS Debit or Paynow)</span>
                   </div>
                 </span>
-                <span class="items-stretch flex gap-4 mt-3.5 self-start">
-                  <div class="text-cyan-700 text-base font-medium leading-6">
-                    Clear all
-                  </div>
-                  <button x-on:click="localStorage.setItem('nameList', '[]'); localStorage.setItem('paymentFixed', '{}'); window.location.reload();" class="text-cyan-700 text-base font-medium leading-6">
-                    Reset
-                  </button>
-                  
-
-                </span>
+                
               </div>
 
 
@@ -803,12 +782,24 @@
         async function distributeCashPayment(payment) {
           let inputValue = parseFloat(document.getElementById('cash' + payment).value);
           if (payment == 'Downpayment') {
+            if(inputValue > defaultDownpayment) {
+              alertError("Cash value cannot exceed total required payment.");
+              return;
+            }
             totalDownpayment = defaultDownpayment - inputValue;
             await localStorage.setItem('downpayment', totalDownpayment);
           } else if (payment == 'StampDuty') {
+            if(inputValue > defaultStampDuty) {
+              alertError("Cash value cannot exceed total required payment.");
+              return;
+            }
             totalStampDuty = defaultStampDuty -  inputValue;
             await localStorage.setItem('stampDuty', totalStampDuty);
           } else {
+            if(inputValue > defaultLegalFees) {
+              alertError("Cash value cannot exceed total required payment.");
+              return;
+            }
             totalLegalFees = defaultLegalFees - inputValue;
             await localStorage.setItem('legalFees', totalLegalFees);
           }
@@ -889,12 +880,27 @@
 
 function templateData() {
   return {
-    names: JSON.parse(localStorage.getItem('nameList')) || [],
+    names: ["Payee 1", "Payee 2", "Payee 3", "Payee 4"],
     ...paymentDistributor()
   };
 }
 
-    
+function handleReset(e) {
+    let names = JSON.parse(localStorage.getItem('nameList'));
+    const lf = JSON.parse(localStorage.getItem('legalFeesChanged'));
+    const dp = JSON.parse(localStorage.getItem('changed'));
+    const sd = JSON.parse(localStorage.getItem('stampDutyChanged'));
+
+    for (name of names) {
+      lf[name] = 0;
+      dp[name] = 0;
+      sd[name] = 0;
+    }
+    localStorage.setItem('legalFeesChanged', JSON.stringify(lf));
+    localStorage.setItem('changed', JSON.stringify(dp));
+    localStorage.setItem('stampDutyChanged', JSON.stringify(sd));
+    window.location.reload();
+  }
     
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -903,7 +909,7 @@ function templateData() {
       console.log(localStorage.getItem('nameList'));
       
       if (!localStorage.getItem('nameList') || !localStorage.getItem('changed') || !localStorage.getItem('stampDutyChanged') || !localStorage.getItem('legalFeesChanged')){
-        localStorage.setItem('nameList', '[]');
+        localStorage.setItem('nameList', '["Payee 1", "Payee 2", "Payee 3", "Payee 4"]');
         localStorage.setItem('changed', '{}');
         localStorage.setItem('stampDutyChanged', '{}');
         localStorage.setItem('legalFeesChanged', '{}');
@@ -936,34 +942,7 @@ function templateData() {
       localStorage.setItem('stampDutyChanged', JSON.stringify(stampDutyChanged));
       localStorage.setItem('legalFeesChanged', JSON.stringify(legalFeesChanged));
 
-      button.addEventListener('click', () => {
-        
-        let name = document.getElementById('nameInputField').value;
-        console.log("name", name);
-        let names = JSON.parse(localStorage.getItem("nameList"));
-        if (names.length == 4) {
-          alert('Maximum number of payees is 4.')
-          return;
-        }
-        if (names.includes(name)) {
-          alert('No duplicate names allowed.');
-          return;
-        }
-        console.log(names);
-        names.push(name);
-        let changed = JSON.parse(localStorage.getItem('changed'));
-        let stampDutyChanged = JSON.parse(localStorage.getItem('stampDutyChanged'));
-        let legalFeesChanged = JSON.parse(localStorage.getItem('legalFeesChanged'));
-        for (ne of names){
-          changed[ne] = 0;
-          stampDutyChanged[ne] = 0;
-          legalFeesChanged[ne] = 0;
-        }
-        localStorage.setItem('nameList', JSON.stringify(names));
-        localStorage.setItem('changed', JSON.stringify(changed));
-        
-        window.location.reload();
-      });
+      
 
 
       

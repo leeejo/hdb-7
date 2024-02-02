@@ -19,7 +19,7 @@
 </style>
 
 </head>
-<body x-data="{numberPayee: 0, addingPayee: false, percentageCalc: false}">
+<body x-data="{numberPayee: 4, addingPayee: false, percentageCalc: false}">
 
   <div class="bg-white flex flex-col pt-6 rounded-3xl items-end">
     <img
@@ -73,23 +73,12 @@
                   <a href="v2.html" class="text-cyan-700 text-base font-medium leading-6">
                     $
                   </a>
-                  <div class="text-cyan-700 text-base font-medium leading-6">
-                    Clear all
-                  </div>
-                  <button x-on:click="localStorage.setItem('nameList', '[]'); localStorage.setItem('paymentFixed', '{}'); window.location.reload();" class="text-cyan-700 text-base font-medium leading-6">
+                  
+                  <button x-on:click="handleReset" class="text-cyan-700 text-base font-medium leading-6">
                     Reset
                   </button>
-                  <button x-on:click = " addingPayee = true;" class="text-cyan-700 text-base font-medium leading-6">
-                    Add Payee
-                  </button>
-                  <div x-show="addingPayee" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div @click.away="addingPayee = false" class="p-4 bg-white rounded-lg shadow-xl">
-                      <input type="text" id = "nameInputField" class="w-64 p-2 border-2 border-blue-500 rounded-md" placeholder="Enter name.">
-                      <button id = "addedPayee" @click="addingPayee= false" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md">
-                        Submit
-                      </button>
-                    </div>
-                  </div>
+                  
+                  
 
                 </span>
               </div>
@@ -258,16 +247,7 @@
                     <span class="font-bold text-black text-2xl">Paying with cash</span> <span class = "text-l ml-2">(eNETS Debit or Paynow)</span>
                   </div>
                 </span>
-                <span class="items-stretch flex gap-4 mt-3.5 self-start">
-                  <div class="text-cyan-700 text-base font-medium leading-6">
-                    Clear all
-                  </div>
-                  <button x-on:click="localStorage.setItem('nameList', '[]'); localStorage.setItem('paymentFixed', '{}'); window.location.reload();" class="text-cyan-700 text-base font-medium leading-6">
-                    Reset
-                  </button>
-                  
-
-                </span>
+                
               </div>
 
 
@@ -696,12 +676,24 @@
         async function distributeCashPayment(payment) {
           let inputValue = parseFloat(document.getElementById('cash' + payment).value);
           if (payment == 'Downpayment') {
+            if(inputValue > defaultDownpayment) {
+              alertError("Cash value cannot exceed total required payment.");
+              return;
+            }
             totalDownpayment = defaultDownpayment - inputValue;
             await localStorage.setItem('downpayment', totalDownpayment);
           } else if (payment == 'StampDuty') {
+            if(inputValue > defaultStampDuty) {
+              alertError("Cash value cannot exceed total required payment.");
+              return;
+            }
             totalStampDuty = defaultStampDuty -  inputValue;
             await localStorage.setItem('stampDuty', totalStampDuty);
           } else {
+            if(inputValue > defaultLegalFees) {
+              alertError("Cash value cannot exceed total required payment.");
+              return;
+            }
             totalLegalFees = defaultLegalFees - inputValue;
             await localStorage.setItem('legalFees', totalLegalFees);
           }
@@ -750,6 +742,11 @@
           downpayments[nameChanged] = roundToNearest05(inputValue * totalDownpayment / 100);
           stamp_duties[nameChanged] = roundToNearest05(inputValue * totalStampDuty / 100);
           legal_fees[nameChanged] = roundToNearest05(inputValue * totalLegalFees / 100);
+
+          if (downpayments[nameChanged] < 7500) {
+            alertError("Downpayment value needs to exceed $7500.");
+            return;
+          }
 
           let numChanged = Object.values(changedPercentages).filter(v => v == 1).length;
           const numToSplit = names.length - numChanged;
@@ -812,16 +809,27 @@
 
   
 
-function templateData() {
-  
-  
-  return {
-    names: JSON.parse(localStorage.getItem('nameList')) || [],
-    ...paymentDistributor()
+  function templateData() {
     
-  };
-}
+    
+    return {
+      names: ["Payee 1", "Payee 2", "Payee 3", "Payee 4"],
+      ...paymentDistributor()
+      
+    };
+  }
 
+
+  function handleReset(e) {
+    let names = JSON.parse(localStorage.getItem('nameList'));
+    const cp = JSON.parse(localStorage.getItem('changedPercentages'));
+    for (name of names) {
+      cp[name] = 0;
+      
+    }
+    localStorage.setItem('changedPercentages', JSON.stringify(cp));
+    window.location.reload();
+  }
     
     
 
@@ -831,7 +839,7 @@ function templateData() {
       console.log(localStorage.getItem('nameList'));
       
       if (!localStorage.getItem('nameList') || !localStorage.getItem('changedPercentages')){
-        localStorage.setItem('nameList', '[]');
+        localStorage.setItem('nameList', '["Payee 1", "Payee 2", "Payee 3", "Payee 4"]');
         localStorage.setItem('changedPercentages', '{}');
       }
 
@@ -857,27 +865,27 @@ function templateData() {
       
       localStorage.setItem('changedPercentages', JSON.stringify(changedPercentages));
 
-      button.addEventListener('click', () => {
+      // button.addEventListener('click', () => {
         
-        let name = document.getElementById('nameInputField').value;
-        console.log("name", name);
-        let names = JSON.parse(localStorage.getItem("nameList"));
-        if (names.length == 4) {
-          alert('Maximum number of payees is 4.');
-          return;
-        }
-        console.log(names);
-        names.push(name);
-        let changedPercentages = JSON.parse(localStorage.getItem('changedPercentages'));
-        for (ne of names){
-          changedPercentages[ne] = 0;
+      //   let name = document.getElementById('nameInputField').value;
+      //   console.log("name", name);
+      //   let names = JSON.parse(localStorage.getItem("nameList"));
+      //   if (names.length == 4) {
+      //     alert('Maximum number of payees is 4.');
+      //     return;
+      //   }
+      //   console.log(names);
+      //   names.push(name);
+      //   let changedPercentages = JSON.parse(localStorage.getItem('changedPercentages'));
+      //   for (ne of names){
+      //     changedPercentages[ne] = 0;
          
-        }
-        console.log(changedPercentages)
-        localStorage.setItem('nameList', JSON.stringify(names));
-        localStorage.setItem('changedPercentages', JSON.stringify(changedPercentages));
-        window.location.reload();
-      });
+      //   }
+      //   console.log(changedPercentages)
+      //   localStorage.setItem('nameList', JSON.stringify(names));
+      //   localStorage.setItem('changedPercentages', JSON.stringify(changedPercentages));
+      //   window.location.reload();
+      // });
 
 
       
