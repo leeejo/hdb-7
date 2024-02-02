@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Financial editor demo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<link rel="stylesheet" href="../font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+
+
+<style type="text/tailwindcss">
+  @layer utilities {
+    .card {
+  border-radius: 5px; /* Optional: Rounded corners */
+  margin: 2rem;
+    }
+  }
+</style>
+
+</head>
+<body x-data="{numberPayee: 0, addingPayee: false}">
+
+  <div class="bg-white flex flex-col pt-6 rounded-3xl items-end">
+    <img
+      loading="lazy"
+      src="https://cdn.builder.io/api/v1/image/assets/TEMP/cb13cbc1951526af8e976dd7d08f3658d6842d4ac8e24b0ffd51b65dc103d487?"
+      class="aspect-square object-contain object-center w-6 overflow-hidden max-w-full mr-8 max-md:mr-2.5"
+    />
+    <span
+      class="self-center flex ml-0 flex-col items-stretch mt-1.5 max-md:max-w-full"
+    >
+      <div
+        class="text-zinc-800 text-5xl font-bold leading-[56.16px] max-md:max-w-full max-md:text-4xl"
+      >
+        Propose a new financial plan
+      </div>
+      <div class="text-zinc-800 text-lg leading-6 mt-3 max-md:max-w-full">
+        Please ensure that the CPF payment amount includes the housing grant that
+        has been credited to your CPF Ordinary Account (OA).
+      </div>
+    </span>
+    <div
+      class="justify-center self-stretch w-full mt-14 px-6 max-md:max-w-full max-md:mt-10 max-md:px-5"
+    >
+      <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 max-md:max-w-full" x-data="templateData()">
+        <div
+          class="flex flex-col items-stretch w-[58%] max-md:w-full max-md:ml-0"
+        >
+          <div
+            class="items-stretch self-stretch flex grow flex-col max-md:max-w-full max-md:mt-6"
+          >
+            <div
+              class="items-stretch shadow bg-white flex flex-col max-md:max-w-full"
+            >
+              <div
+                class="justify-between items-stretch flex w-full gap-5 pt-4 px-6 max-md:max-w-full max-md:flex-wrap max-md:px-5"
+              >
+                <span
+                  class="flex items-stretch justify-between gap-1 max-md:max-w-full max-md:flex-wrap"
+                >
+                  
+                  <div
+                    class="text-black text-2xl font-bold grow whitespace-nowrap my-auto"
+                  >
+                    Paying with CPF Ordinary Account (OA)
+                  </div>
+                </span>
+                <span class="items-stretch flex gap-4 mt-3.5 self-start">
+                  <a href="v1.html" class="text-cyan-700 text-base font-medium leading-6">
+                    %
+                  </a>
+                  <div class="text-cyan-700 text-base font-medium leading-6">
+                    Clear all
+                  </div>
+                  <button x-on:click="localStorage.setItem('nameList', '[]'); localStorage.setItem('paymentFixed', '{}'); window.location.reload();" class="text-cyan-700 text-base font-medium leading-6">
+                    Reset
+                  </button>
+                  <button x-on:click = " addingPayee = true;" class="text-cyan-700 text-base font-medium leading-6">
+                    Add Payee
+                  </button>
+                  <div x-show="addingPayee" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div @click.away="addingPayee = false" class="p-4 bg-white rounded-lg shadow-xl">
+                      <input type="text" id = "nameInputField" class="w-64 p-2 border-2 border-blue-500 rounded-md" placeholder="Enter name.">
+                      <button id = "addedPayee" @click="addingPayee= false" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md">
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+
+                </span>
+              </div>
+
+
+              
+              <div id="templates" >
+
+                <template x-for="name in names" :key="name">
+                  <span class="items-stretch bg-slate-100 flex flex-col p-6">
+                <div
+                  class="text-zinc-800 text-xl font-bold leading-6 max-md:max-w-full"
+                >
+                  <span x-text="name"> </span>
+                </div>
+                <div class="justify-between mt-4 max-md:max-w-full">
+                  <div
+                    class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+                  >
+                    <div
+                      class="flex flex-col items-stretch w-[75%] max-md:w-full max-md:ml-0"
+                    >
+                      <div class="grow max-md:max-w-full max-md:mt-10">
+                        <div
+                          class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+                        >
+                          <div
+                            class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
+                          >
+                            <span
+                              class="items-stretch flex grow flex-col max-md:mt-6"
+                            >
+                              <div
+                                class="text-zinc-800 text-lg font-bold leading-6"
+                              >
+                                Downpayment(S$)
+                              </div>
+                              <input
+                                class="text-zinc-800 text-lg leading-6 whitespace-nowrap justify-center items-stretch border border-[color:var(--Primary-Bright-Teal,#0C8188)] bg-white mt-2 pl-12 pr-4 py-3 rounded-lg border-solid"
+                                type="number"
+                                placeholder="S$"
+                                :id="name + 'Downpayment'"
+                                x-model="downpayments[name]"  
+                                @input="await distributeDownpayment(name)" 
+                                >
+                                
+                              </span>
+                              <div
+                                class="text-zinc-600 text-base font-medium leading-6 mt-1"
+                              >
+                                Includes Housing Grant of S$7,500.00
+                              </div>
+                            </span>
+                          </div>
+                          <div
+                            class="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0"
+                          >
+                            <span
+                              class="items-stretch self-stretch flex flex-col max-md:mt-6"
+                            >
+                              <div
+                                class="text-zinc-800 text-lg font-bold leading-6"
+                              >
+                                Stamp Duty(S$)
+                              </div>
+                              <input
+                                class="text-zinc-800 text-lg leading-6 whitespace-nowrap justify-center items-stretch border border-[color:var(--Primary-Bright-Teal,#0C8188)] bg-white mt-2 pl-12 pr-4 py-3 rounded-lg border-solid"
+                                type="number"
+                                placeholder="S$"
+                                :id="name + 'StampDuty'"
+                                x-model="stamp_duties[name]"  
+                                @input="await distributeStampDuty(name)" 
+                                >
+                                
+                            </span>
+                          </div>
+                          <div
+                            class="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0"
+                          >
+                            <span
+                              class="items-stretch self-stretch flex flex-col max-md:mt-6"
+                            >
+                              <div
+                                class="text-zinc-800 text-lg font-bold leading-6"
+                              >
+                                Legal Fees(S$)
+                              </div>
+                              <input
+                                class="text-zinc-800 text-lg leading-6 whitespace-nowrap justify-center items-stretch border border-[color:var(--Primary-Bright-Teal,#0C8188)] bg-white mt-2 pl-12 pr-4 py-3 rounded-lg border-solid"
+                                type="text"
+                                placeholder="S$"
+                                :id="name + 'LegalFee'"
+                                x-model="legal_fees[name]"  
+                                @input="await distributeLegalFee(name)" 
+                                >
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex flex-col items-stretch w-[25%] ml-5 max-md:w-full max-md:ml-0"
+                    >
+                      <span
+                        class="self-stretch flex flex-col pl-6 pb-12 items-end max-md:mt-10 max-md:pl-5"
+                      >
+                        <div
+                          class="text-zinc-800 text-lg font-bold leading-6 whitespace-nowrap"
+                        >
+                          Total
+                        </div>
+                        <div
+                          class="text-zinc-800 text-right text-xl font-bold leading-6 self-stretch whitespace-nowrap mt-5 mb-2.5"
+                        >
+                          <span x-text="'S$' + (parseFloat(downpayments[name]) + parseFloat(stamp_duties[name]) + parseFloat(legal_fees[name])).toFixed(2)"></span>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                </span>
+              </template>
+
+              </div>
+
+            
+              
+
+
+              
+
+
+            </div>
+          </div>
+        <div
+            class="items-stretch self-stretch flex grow flex-col max-md:max-w-full mt-8 mb-5"
+          >
+            <div
+              class="items-stretch shadow bg-white flex flex-col max-md:max-w-full"
+            >
+              <div
+                class="justify-between items-stretch flex w-full gap-5 pt-4 px-6 max-md:max-w-full max-md:flex-wrap max-md:px-5"
+              >
+                <span
+                  class="flex items-stretch justify-between gap-1 max-md:max-w-full max-md:flex-wrap"
+                >
+                  
+                  <div
+                    class=" grow whitespace-nowrap my-auto"
+                  >
+                    <span class="font-bold text-black text-2xl">Paying with cash</span> <span class = "text-l ml-2">(eNETS Debit or Paynow)</span>
+                  </div>
+                </span>
+                <span class="items-stretch flex gap-4 mt-3.5 self-start">
+                  <div class="text-cyan-700 text-base font-medium leading-6">
+                    Clear all
+                  </div>
+                  <button x-on:click="localStorage.setItem('nameList', '[]'); localStorage.setItem('paymentFixed', '{}'); window.location.reload();" class="text-cyan-700 text-base font-medium leading-6">
+                    Reset
+                  </button>
+                  
+
+                </span>
+              </div>
+
+
+              
+              <div id="cash" >
+
+                
+                  <span class="items-stretch bg-slate-100 flex flex-col p-6">
+                <div
+                  class="text-zinc-800 text-xl font-bold leading-6 max-md:max-w-full"
+                >
+                  
+                </div>
+                <div class="justify-between mt-4 max-md:max-w-full">
+                  <div
+                    class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+                  >
+                    <div
+                      class="flex flex-col items-stretch w-[75%] max-md:w-full max-md:ml-0"
+                    >
+                      <div class="grow max-md:max-w-full max-md:mt-10">
+                        <div
+                          class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+                        >
+
+                      
+                          <div
+                            class="flex flex-col items-stretch w-[30%] max-md:w-full max-md:ml-0"
+                          >
+                            <span
+                              class="items-stretch flex grow flex-col max-md:mt-6"
+                            >
+                              <div
+                                class="text-zinc-800 text-lg font-bold leading-6"
+                              >
+                                Downpayment(S$)
+                              </div>
+                              <input
+                                class="text-zinc-800 text-lg leading-6 whitespace-nowrap justify-center items-stretch border border-[color:var(--Primary-Bright-Teal,#0C8188)] bg-white mt-2 pl-12 pr-4 py-3 rounded-lg border-solid"
+                                type="text"
+                                placeholder="0.00"
+                                :id="'cashDownpayment'" 
+                                x-model="cash['Downpayment']"
+                                @input="await distributeCashPayment('Downpayment')" 
+                                >
+                                
+                              </span>
+                              
+                            </span>
+                          </div>
+                          <div
+                            class="flex flex-col items-stretch w-[30%] ml-5 max-md:w-full max-md:ml-0"
+                          >
+                            <span
+                              class="items-stretch self-stretch flex flex-col max-md:mt-6"
+                            >
+                              <div
+                                class="text-zinc-800 text-lg font-bold leading-6"
+                              >
+                                Stamp Duty(S$)
+                              </div>
+                              <input
+                                class="text-zinc-800 text-lg leading-6 whitespace-nowrap justify-center items-stretch border border-[color:var(--Primary-Bright-Teal,#0C8188)] bg-white mt-2 pl-12 pr-4 py-3 rounded-lg border-solid"
+                                type="text"
+                                placeholder="0.00"
+                                :id="'cashStampDuty'" 
+                                x-model="cash['StampDuty']"
+                                @input="await distributeCashPayment('StampDuty')" 
+                                >
+                                
+                            </span>
+                          </div>
+                          <div
+                            class="flex flex-col items-stretch w-[25%] ml-5 max-md:w-full max-md:ml-0"
+                          >
+                            <span
+                              class="items-stretch self-stretch flex flex-col max-md:mt-6"
+                            >
+                              <div
+                                class="text-zinc-800 text-lg font-bold leading-6"
+                              >
+                                Legal Fees(S$)
+                              </div>
+                              <input
+                                class="text-zinc-800 text-lg leading-6 whitespace-nowrap justify-center items-stretch border border-[color:var(--Primary-Bright-Teal,#0C8188)] bg-white mt-2 pl-12 pr-4 py-3 rounded-lg border-solid"
+                                type="text"
+                                placeholder="0.00"
+                                :id="'cashLegalFee'" 
+                                x-model="cash['LegalFee']"
+                                @input="await distributeCashPayment('LegalFee')" 
+                                >
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex flex-col items-stretch w-[25%] ml-5 max-md:w-full max-md:ml-0"
+                    >
+                      <span
+                        class="self-stretch flex flex-col pl-6 pb-12 items-end max-md:mt-10 max-md:pl-5"
+                      >
+                        <div
+                          class="text-zinc-800 text-lg font-bold leading-6 whitespace-nowrap"
+                        >
+                          Total
+                        </div>
+                        <div
+                          class="text-zinc-800 text-right text-xl font-bold leading-6 self-stretch whitespace-nowrap mt-5 mb-2.5"
+                        >
+                          <span x-text="'S$' + (parseFloat(cash['Downpayment']) + parseFloat(cash['StampDuty']) + parseFloat(cash['LegalFee'])).toFixed(2)"></span>
+                        </div>
+
+
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                </span>
+              </template>
+              
+              </div>
+
+            
+              
+
+              
+              
+
+
+            </div>
+            
+          </div>
+
+          
+          <div  id="errorDisplay" x-cloak x-show="error.state" class=" items-center flex justify-center w-full border-red bg-red-200 min-h-[60px] mb-5">
+            <i class="fa fa-exclamation-circle mr-3" aria-hidden="true"></i>
+            
+            
+            
+            <span class="text-center" x-text="error.errorMessage"></span>
+        </div>
+        
+        </div>
+
+        
+        <div
+          class="flex flex-col items-stretch w-[42%] ml-5 max-md:w-full max-md:ml-0"
+
+        >
+          <div
+            class="items-stretch self-stretch flex grow flex-col pb-12 max-md:max-w-full max-md:mt-6"
+          >
+            <div
+              class="items-stretch shadow-sm bg-white flex flex-col rounded-2xl max-md:max-w-full"
+            >
+              <span
+                class="items-stretch flex flex-col pl-6 py-6 rounded-2xl max-md:max-w-full max-md:pl-5"
+              >
+                <div
+                  class="text-zinc-800 text-2xl font-bold leading-7 max-md:max-w-full"
+                >
+                  Payment Bill
+                </div>
+                <div
+                  class="border-t-[color:var(--Primary-Bright-Teal,#0C8188)] flex shrink-0 h-px flex-col mt-6 border-t border-solid max-md:max-w-full"
+                ></div>
+                <span
+                  class="items-stretch flex justify-between gap-5 mt-6 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="text-zinc-800 text-xl font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Downpayment
+                  </div>
+                  <div
+                    class="text-zinc-800 text-right text-xl font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    S$52,295.00
+                  </div>
+                </span>
+                <span
+                  class="items-stretch flex justify-between gap-5 mt-2 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="text-zinc-600 text-lg leading-6 grow whitespace-nowrap"
+                  >
+                    10% of Purchase price S$542,950.10
+                  </div>
+                  <div
+                    class="text-zinc-600 text-right text-lg leading-6 grow whitespace-nowrap"
+                  >
+                    S$54,295.00
+                  </div>
+                </span>
+                <span
+                  class="items-stretch flex justify-between gap-5 mt-2 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="text-zinc-600 text-lg leading-6 grow whitespace-nowrap"
+                  >
+                    Less option fee
+                  </div>
+                  <div
+                    class="text-zinc-600 text-right text-lg leading-6 grow whitespace-nowrap"
+                  >
+                    -S$2,000.00
+                  </div>
+                </span>
+                <span
+                  class="items-stretch flex justify-between gap-5 mt-6 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="text-zinc-800 text-xl font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Stamp Duty
+                  </div>
+                  <div
+                    class="text-zinc-800 text-right text-xl font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    S$10,888.00
+                  </div>
+                </span>
+                <span
+                  class="items-stretch flex justify-between gap-5 mt-6 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="text-zinc-800 text-xl font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Legal Fees
+                  </div>
+                  <div
+                    class="text-zinc-800 text-right text-xl font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    S$500.00
+                  </div>
+                </span>
+              </span>
+              <span
+                class="justify-center items-stretch bg-neutral-100 flex flex-col p-6 max-md:max-w-full max-md:px-5"
+              >
+                <span
+                  class="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
+                >
+                  <div
+                    class="text-zinc-800 text-xl font-bold leading-6 grow whitespace-nowrap"
+                  >
+                    Total Payable
+                  </div>
+                  <div
+                    class="text-zinc-800 text-right text-xl font-bold leading-6 whitespace-nowrap"
+                  >
+                    S$63683.00
+                  </div>
+                </span>
+                <div
+                  class="items-stretch rounded bg-zinc-300 flex justify-between gap-0 mt-4 max-md:max-w-full max-md:flex-wrap"
+                  x-data="{colors:['bg-teal-500', 'bg-cyan-400', 'bg-purple-500', 'bg-yellow-400']}"
+                >
+                  <template x-for="(name, index) in names">
+                  <div
+                    :class="`text-center border-[color:var(--Neutral-Light-Light-Grey,#F7F7F7)] flex w-[${percentages[name]}%] shrink-0 max-w-full h-6 flex-col border-2 border-solid ${colors[index]}`"
+                    x-text="name"
+                  ></div>
+                  </template>
+                  <div
+                    :class="'text-center border-[color:var(--Neutral-Light-Light-Grey,#F7F7F7)] flex w-[' + percentages['Cash'] + '%] shrink-0 max-w-full h-6 flex-col border-2 border-solid bg-lime-300'"
+                    x-text="'Cash'"
+                    x-show="percentages['Cash']"
+                  ></div>
+                </div>
+                <div
+                  class="items-stretch content-start flex-wrap flex justify-between gap-5 mt-4 pr-2 max-md:max-w-full"
+                >
+                  <div class="flex grow basis-[0%] flex-col items-stretch">
+                    <template x-for="name in templateData().names">
+                    <span class="items-center flex gap-2">
+                      <div
+                        class="flex w-4 shrink-0 h-4 flex-col my-auto rounded-[50%]"
+                      ></div>
+                      <span x-text="`${name}'s share`"class="text-zinc-800 text-base font-bold leading-6">
+                        
+                      </span>
+                      <div x-text="`S$${(parseFloat(downpayments[name]) + parseFloat(stamp_duties[name]) + parseFloat(legal_fees[name])).toFixed(2)}`"class="text-zinc-600 text-base font-medium leading-6">
+                        
+                      </div>
+                    </span>
+                  </template>
+                    
+                  </div>
+                  <span class="items-center flex gap-2 mt-8 self-end">
+                    <div
+                      class="flex w-4 shrink-0 h-4 flex-col my-auto rounded-[50%]"
+                    ></div>
+                    <div
+                      class="text-zinc-800 text-base font-bold leading-6 self-stretch"
+                    >
+                      Cash
+                    </div>
+                    <span
+                      class="text-zinc-600 text-base font-medium leading-6 self-stretch grow whitespace-nowrap"
+                      x-text="`S$${(parseFloat(cash['Downpayment']) + parseFloat(cash['LegalFee']) + parseFloat(cash['StampDuty'])).toFixed(2)}`"
+                      
+                    >
+                      
+                  </span>
+                  </span>
+                </div>
+                <div
+                  class="text-zinc-600 text-base italic font-medium leading-6 mt-4 max-md:max-w-full"
+                >
+                  * Legal Fees are non-refundable if the application is cancelled.
+                </div>
+              </span>
+            </div>
+            <div
+              class="justify-between items-stretch content-center flex-wrap self-center flex w-[424px] max-w-full gap-5 mt-12 mb-14 max-md:my-10"
+            >
+              <span
+                class="text-cyan-700 text-center text-base font-medium leading-6 whitespace-nowrap justify-center items-center border border-[color:var(--Primary-Bright-Teal,#0C8188)] bg-white grow px-16 py-3.5 rounded-xl border-solid max-md:px-5"
+              >
+                Cancel
+              </span>
+              <span
+                class="text-white text-center text-base font-medium leading-6 whitespace-nowrap justify-center items-center bg-cyan-700 grow px-16 py-3.5 rounded-xl max-md:px-5"
+              >
+                Save
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let defaultDownpayment = 52295.00
+    let defaultStampDuty  = 10888.00
+    let defaultLegalFees = 500.00;
+    
+    
+    localStorage.setItem('downpayment', defaultDownpayment);
+    localStorage.setItem('stampDuty', defaultStampDuty);
+    localStorage.setItem('legalFees', defaultLegalFees);
+
+    function onlyNumberKey(evt) {
+    // Only ASCII charactar in that range allowed
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+    return true;
+}
+
+    function debounce(func, delay) {
+      let debounceTimer;
+      return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => func.apply(context, args), delay);
+      };
+    } 
+
+    function roundToNearest05(num) {
+        return (Math.round(num*20) / 20).toFixed(2);
+    }
+
+
+
+    function paymentDistributor() {
+      let error = Alpine.reactive({'state': false});
+      let totalDownpayment = parseFloat(localStorage.getItem('downpayment'));
+      let totalStampDuty = parseFloat(localStorage.getItem('stampDuty'));
+      let totalLegalFees = parseFloat(localStorage.getItem('legalFees'));
+        let names = JSON.parse(localStorage.getItem('nameList')) || [];
+        let changed = JSON.parse(localStorage.getItem('changed')) || {};
+        let stampDutyChanged = JSON.parse(localStorage.getItem('stampDutyChanged')) || {};
+        let legalFeesChanged = JSON.parse(localStorage.getItem('legalFeesChanged')) || {};
+        let downpayments = {};
+        let stamp_duties = {};
+        let legal_fees = {};
+        let cash = {'Downpayment':0, 'StampDuty':0, 'LegalFee':0};
+        //console.log(changed);
+        let percentages = {'Cash':0};
+
+        Alpine.effect(() => {
+          console.log(error);
+        })
+        // Initialize payment values
+        names.forEach(name => {
+          downpayments[name] = roundToNearest05((totalDownpayment / names.length).toFixed(2));
+            stamp_duties[name] = roundToNearest05((totalStampDuty / names.length).toFixed(2));
+            legal_fees[name] = roundToNearest05((totalLegalFees / names.length).toFixed(2));
+            percentages[name] = 100 / names.length;
+        });
+
+
+        async function recalculate(payment) {
+          let totalDownpayment = parseFloat(await localStorage.getItem('downpayment'));
+          let totalStampDuty = parseFloat(await localStorage.getItem('stampDuty'));
+          let totalLegalFees = parseFloat(await localStorage.getItem('legalFees'));
+          names.forEach(name => {
+           
+              if(payment == 'Downpayment') downpayments[name] = roundToNearest05((totalDownpayment ) / names.length);
+              else if (payment == 'StampDuty') stamp_duties[name] = roundToNearest05((totalStampDuty ) / names.length);
+              else legal_fees[name] = roundToNearest05((totalLegalFees ) / names.length);
+          })
+
+          
+
+        }
+
+        function alertError(message) {
+            error['state'] = true;
+            error['errorMessage'] = message;
+      }
+        async function distributeDownpayment(nameChanged) {
+            let inputValue = roundToNearest05(parseFloat(document.getElementById(nameChanged + 'Downpayment').value));
+            if (inputValue < 0 || inputValue > totalDownpayment || isNaN(inputValue)) {
+                alertError('Downpayment must be a positive number not exceeding total downpayment.');
+                return;
+            } 
+            changed[nameChanged] = 1;
+            downpayments[nameChanged] = inputValue;
+
+            if(Object.values(changed).every(x => x == 1) && Object.values(downpayments).reduce((a, c) => a + c, 0) != totalDownpayment) {
+              alertError('Downpayment does not add up to required value.')
+              return;
+            }
+
+            let numChanged = Object.values(changed).filter(v => v == 1).length;
+            const numToSplit = names.length - numChanged;
+            let userTotalSetPrice = Object.keys(downpayments)
+            .filter(name => changed[name] === 1)
+            .reduce((total, name) => total + parseFloat(downpayments[name]), 0);
+
+            const leftovers = totalDownpayment - userTotalSetPrice;
+
+            names.forEach(name => {
+            if (changed[name] !== 1 && name !== nameChanged) {
+                downpayments[name] = (leftovers / numToSplit).toFixed(2);
+            }
+            });
+
+            localStorage.setItem('changed', JSON.stringify(changed));
+            
+
+            await this.$nextTick(() => {
+            let updatedPayments = {...downpayments};
+            this.downpayments = updatedPayments;
+            
+            });
+            await recalculatePercentage();
+            let updatedPercentages= {...percentages};
+            this.percentages = updatedPercentages;
+            console.log(downpayments);
+            console.log(percentages);
+
+            
+        }
+
+        async function distributeStampDuty(nameChanged) {
+            const inputValue = roundToNearest05(parseFloat(document.getElementById(nameChanged + 'StampDuty').value));
+            if (inputValue < 0 || inputValue > totalStampDuty || isNaN(inputValue)) {
+                alertError('Stamp Duty must be a positive number not exceeding total stamp duty.');
+                return;
+            } 
+            stampDutyChanged[nameChanged] = 1;
+            stamp_duties[nameChanged] = inputValue;
+            
+            if(Object.values(changed).every(x => x == 1) && Object.values(stamp_duties).reduce((a, c) => a + c, 0) != totalStampDuty) {
+              alertError('Stamp Duty does not add up to required value.')
+              return;
+            }
+            let numChanged = Object.values(stampDutyChanged).filter(v => v == 1).length;
+            const numToSplit = names.length - numChanged;
+            let userTotalSetPrice = Object.keys(stamp_duties)
+            .filter(name => stampDutyChanged[name] === 1)
+            .reduce((total, name) => total + parseFloat(stamp_duties[name]), 0);
+
+            const leftovers = totalStampDuty - userTotalSetPrice;
+
+            names.forEach(name => {
+            if (stampDutyChanged[name] !== 1 && name !== nameChanged) {
+                stamp_duties[name] = (leftovers / numToSplit).toFixed(2);
+            }
+            });
+
+            localStorage.setItem('stampDutyChanged', JSON.stringify(stampDutyChanged));
+            
+
+            await this.$nextTick(() => {
+            let updatedPayments = {...stamp_duties};
+            this.stamp_duties = updatedPayments;
+            
+            });
+            recalculatePercentage();
+            let updatedPercentages= {...percentages};
+            this.percentages = updatedPercentages;
+            console.log(stamp_duties);
+            console.log(percentages);
+
+            
+        }
+
+        async function distributeLegalFees(nameChanged) {
+            let inputValue = roundToNearest05(parseFloat(document.getElementById(nameChanged + 'LegalFee').value));
+            if (inputValue < 0 || inputValue > totalLegalFees || isNaN(inputValue)) {
+                alertError('Legal Fees must be a positive number not exceeding total legal fee.');
+                return;
+            } 
+            legalFeesChanged[nameChanged] = 1;
+            legal_fees[nameChanged] = inputValue;
+            if(Object.values(changed).every(x => x == 1) && Object.values(legal_fees).reduce((a, c) => a + c, 0) != totalLegalFees) {
+              alertError('Legal Fees does not add up to required value.')
+              return;
+            }
+            let numChanged = Object.values(legalFeesChanged).filter(v => v == 1).length;
+            const numToSplit = names.length - numChanged;
+            let userTotalSetPrice = Object.keys(stamp_duties)
+            .filter(name => legalFeesChanged[name] === 1)
+            .reduce((total, name) => total + parseFloat(legal_fees[name]), 0);
+
+            const leftovers = totalLegalFees - userTotalSetPrice;
+
+            names.forEach(name => {
+            if (legalFeesChanged[name] !== 1 && name !== nameChanged) {
+                legal_fees[name] = (leftovers / numToSplit).toFixed(2);
+            }
+            });
+
+            localStorage.setItem('legalFeesChanged', JSON.stringify(legalFeesChanged));
+            
+
+            await this.$nextTick(() => {
+            let updatedPayments = {...legal_fees};
+            this.legal_fees= updatedPayments;
+            
+            });
+            await recalculatePercentage();
+            let updatedPercentages= {...percentages};
+            this.percentages = updatedPercentages;
+            console.log(legal_fees);
+            console.log(percentages);
+
+            
+        }
+
+        async function distributeCashPayment(payment) {
+          let inputValue = parseFloat(document.getElementById('cash' + payment).value);
+          if (payment == 'Downpayment') {
+            totalDownpayment = defaultDownpayment - inputValue;
+            await localStorage.setItem('downpayment', totalDownpayment);
+          } else if (payment == 'StampDuty') {
+            totalStampDuty = defaultStampDuty -  inputValue;
+            await localStorage.setItem('stampDuty', totalStampDuty);
+          } else {
+            totalLegalFees = defaultLegalFees - inputValue;
+            await localStorage.setItem('legalFees', totalLegalFees);
+          }
+          cash[payment] = inputValue;
+          recalculate(payment);
+          await this.$nextTick(() => {
+            let updatedLF = {...legal_fees};
+            this.legal_fees= updatedLF;
+            let updatedSD = {...stamp_duties};
+            this.stamp_duties = updatedSD;
+            let DP = {...downpayments};
+            this.downpayments = DP;
+            
+            });
+          let length = names.length;
+          
+          // switch(payment) {
+          //   case 'Downpayment':
+          //     names.forEach(name => {
+          //       downpayments[name] = parseFloat((downpayments[name]) - (inputValue / length));
+          //       console.log(downpayments[name], name);
+          //     })
+          //     break;
+          //   case 'StampDuty':
+          //     names.forEach(name => {
+          //       console.log(name, stamp_duties[name], parseFloat(stamp_duties[name]), inputValue/length, parseFloat(stamp_duties[name]) - inputValue/length)
+          //       stamp_duties[name] = parseFloat(stamp_duties[name]) - inputValue/length;
+          //     })
+          //     break;
+          //   case 'LegalFee':
+          //     names.forEach(name => {
+          //       legal_fees[name] = parseFloat((legal_fees[name]) - (inputValue / length));
+          //     })
+          //     break;
+            
+          // }
+          await recalculatePercentage();
+          let updatedPercentages = {...percentages};
+          this.percentages = updatedPercentages;
+          console.log(downpayments);
+        }
+
+        function recalculatePercentage() {
+          percentages['Cash'] = parseFloat((parseFloat(cash['Downpayment']) + parseFloat(cash['LegalFee']) + parseFloat(cash['StampDuty'])) / 63683 * 100);
+
+          for (name of names) {
+            percentages[name] = parseFloat(((parseFloat(downpayments[name]) + parseFloat(stamp_duties[name]) + parseFloat(legal_fees[name])) / 63683) * 100 );
+          }
+
+          
+          console.log(percentages);
+          
+        }
+
+    const debounceddistributeDownpayment = debounce(distributeDownpayment, 1000);
+    const debounceddistributeStampDuty = debounce(distributeStampDuty, 1000);
+    const debounceddistributeLegalFee = debounce(distributeLegalFees, 1000);
+    const debouncedDistributeCashPayment = debounce(distributeCashPayment, 1000);
+
+    
+    return { 
+        downpayments, 
+        stamp_duties,
+        legal_fees, 
+        cash,
+        error,
+        percentages,
+        distributeDownpayment: debounceddistributeDownpayment , 
+        distributeStampDuty: debounceddistributeStampDuty, 
+        distributeLegalFee: debounceddistributeLegalFee,
+        distributeCashPayment: debouncedDistributeCashPayment
+        
+    };
+}
+  
+
+  
+
+function templateData() {
+  return {
+    names: JSON.parse(localStorage.getItem('nameList')) || [],
+    ...paymentDistributor()
+  };
+}
+
+    
+    
+
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      let button = document.getElementById('addedPayee');
+      console.log(localStorage.getItem('nameList'));
+      
+      if (!localStorage.getItem('nameList') || !localStorage.getItem('changed') || !localStorage.getItem('stampDutyChanged') || !localStorage.getItem('legalFeesChanged')){
+        localStorage.setItem('nameList', '[]');
+        localStorage.setItem('changed', '{}');
+        localStorage.setItem('stampDutyChanged', '{}');
+        localStorage.setItem('legalFeesChanged', '{}');
+      }
+
+      
+      const names = JSON.parse(localStorage.getItem('nameList'));
+      let changed = JSON.parse(localStorage.getItem('changed'));
+      let stampDutyChanged = JSON.parse(localStorage.getItem('stampDutyChanged'));
+      let legalFeesChanged = JSON.parse(localStorage.getItem('legalFeesChanged'));
+      for (name of names) {
+        changed[name] = 0;
+        stampDutyChanged[name] = 0;
+        legalFeesChanged[name] = 0;
+      }
+      localStorage.setItem('changed', JSON.stringify(changed));
+      localStorage.setItem('stampDutyChanged', JSON.stringify(stampDutyChanged));
+      localStorage.setItem('legalFeesChanged', JSON.stringify(legalFeesChanged));
+      function deleteKeysNotInArray(obj, arr) {
+        Object.keys(obj).forEach(key => {
+            if (!arr.includes(key)) {
+                delete obj[key];
+            }
+        });
+      }
+      deleteKeysNotInArray(changed, names);
+      deleteKeysNotInArray(stampDutyChanged, names);
+      
+      localStorage.setItem('changed', JSON.stringify(changed));
+      localStorage.setItem('stampDutyChanged', JSON.stringify(stampDutyChanged));
+      localStorage.setItem('legalFeesChanged', JSON.stringify(legalFeesChanged));
+
+      button.addEventListener('click', () => {
+        
+        let name = document.getElementById('nameInputField').value;
+        console.log("name", name);
+        let names = JSON.parse(localStorage.getItem("nameList"));
+        if (names.length == 4) {
+          alert('Maximum number of payees is 4.')
+          return;
+        }
+        if (names.includes(name)) {
+          alert('No duplicate names allowed.');
+          return;
+        }
+        console.log(names);
+        names.push(name);
+        let changed = JSON.parse(localStorage.getItem('changed'));
+        let stampDutyChanged = JSON.parse(localStorage.getItem('stampDutyChanged'));
+        let legalFeesChanged = JSON.parse(localStorage.getItem('legalFeesChanged'));
+        for (ne of names){
+          changed[ne] = 0;
+          stampDutyChanged[ne] = 0;
+          legalFeesChanged[ne] = 0;
+        }
+        localStorage.setItem('nameList', JSON.stringify(names));
+        localStorage.setItem('changed', JSON.stringify(changed));
+        
+        window.location.reload();
+      });
+
+
+      
+      // for (name of names) {
+      //   let input = document.getElementById(name + 'Downpayment');
+      //   input.addEventListener('')
+      // }
+
+
+      
+
+      
+    });
+  </script>
+  
+  
+  
+</body>
+</html>
