@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Financial editor demo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<!-- from node_modules -->
+<script src="node_modules/@material-tailwind/html/scripts/collapse.js"></script>
+<link rel="stylesheet" href="../font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+<style type="text/tailwindcss">
+  @layer utilities {
+    .card {
+  border-radius: 5px; /* Optional: Rounded corners */
+  margin: 2rem;
+    }
+  }
+  .font-cabin {
+  font-family: 'Cabin', sans-serif;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+    <div
+  class="flex flex-col rounded-2xl border-solid border-[3px] border-[color:var(--Primary-500,#0C8188)] max-w"
+>
+  <div
+    class="justify-center px-6 py-4 text-2xl font-bold leading-7 text-white bg-cyan-700 rounded-2xl max-md:px-5 max-md:max-w-full"
+  >
+    Manner of Holding
+  </div>
+  <div
+    class="flex flex-col px-6 py-7 w-full rounded-none bg-slate-100 max-md:px-5 max-md:max-w-full"
+  >
+    <div class="text-lg leading-6 text-zinc-800 max-md:max-w-full">
+      The manner of holding is the type of property ownership for the flat. It
+      determines how the property will be passed on if one of the owners passes
+      away.
+    </div>
+    <div
+      class="self-start mt-6 text-lg font-bold leading-6 text-cyan-700 underline whitespace-nowrap"
+    >
+      Read more on Manner of Holding
+    </div>
+    <div
+      class="flex flex-col px-6 py-7 mt-6 bg-white rounded-2xl shadow max-md:px-5 max-md:max-w-full"
+    >
+      <div class="text-2xl font-bold leading-7 text-zinc-800 max-md:max-w-full">
+        What is your preferred holding type?
+      </div>
+      <div class="mt-6 max-md:max-w-full">
+        <div class="flex gap-5 max-md:flex-col max-md:gap-0 max-md:">
+          <div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
+            <div
+              class="flex flex-col grow self-stretch px-6 pt-6 pb-11 mx-auto w-full bg-white rounded-2xl border-2 border-solid shadow-sm border-[color:var(--Neutral-Light-Grey,#EBEBEB)] text-zinc-800 max-md:px-5 max-md:mt-4"
+            >
+              <div
+                class="flex gap-4 justify-between text-2xl font-bold leading-7 whitespace-nowrap"
+              >
+                <div
+                  class="my-auto w-5 h-5 bg-white rounded-xl border border-solid border-[color:var(--Neutral-Dark-grey,#575757)]"
+                ></div>
+                <div class="grow">Joint Tenancy</div>
+              </div>
+              <div class="mt-4 text-lg leading-6">
+                The co-owners have an equal interest in the flat.
+              </div>
+              <div class="mt-4 text-sm font-medium leading-5 text-zinc-600">
+                The property automatically goes to the remaining co-owner(s) if
+                you die, regardless of whether you have a will or not
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+            <div
+              class="flex flex-col grow self-stretch p-6 mx-auto w-full rounded-2xl border-2 border-solid shadow-sm bg-slate-100 border-[color:var(--Primary-Bright-Teal,#0C8188)] max-md:px-5 max-md:mt-4"
+            >
+              <div class="flex gap-4 justify-between">
+                <div
+                  class="flex flex-col justify-center p-1.5 my-auto aspect-square fill-slate-100 stroke-[1px] stroke-cyan-700"
+                >
+                  <div class="shrink-0 h-2 rounded-full"></div>
+                </div>
+                <div class="grow text-2xl font-bold leading-7 text-zinc-800">
+                  Tenancy-in-Common
+                </div>
+              </div>
+              <div class="mt-4 text-lg leading-6 text-zinc-800">
+                Each co-owner holds a separate and distinct shares in the flat.
+              </div>
+              <div class="mt-4 text-sm font-medium leading-5 text-zinc-600">
+                The property does not go automatically to the remaining
+                co-owner(s) if you die
+                <br />
+                You can decide how you want to distribute your share of the
+                property in your will
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col px-6 py-7 mt-6 bg-white max-md:px-5 max-md:max-w-full"
+    >
+      <div class="text-2xl font-bold leading-7 text-zinc-800 max-md:max-w-full">
+        How do you want to split your shares?
+      </div>
+      <div class="mt-2 text-lg leading-6 text-zinc-600 max-md:max-w-full">
+        Indicate how many shares each applicant would hold, under
+        tenancy-in-commons.
+      </div>
+      <div
+        class="flex gap-4 justify-between p-4 mt-6 text-lg leading-6 bg-white rounded-2xl border-2 border-solid border-[color:var(--Neutral-Light-Grey,#EBEBEB)] max-md:flex-wrap max-md:max-w-full"
+      >
+        <div
+          class="self-start w-5 h-5 bg-white rounded-xl border border-solid border-[color:var(--Neutral-Dark-grey,#575757)]"
+        ></div>
+        <div class="flex flex-col flex-1 justify-center max-md:max-w-full">
+          <div class="font-bold text-zinc-800 max-md:max-w-full">
+            Equal distribution among applicants
+          </div>
+          <div class="mt-2 text-zinc-600 max-md:max-w-full">
+            Each co-owner receives an equal share, with each having 1 part of
+            the shares.
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex gap-4 justify-between p-4 mt-4 rounded-2xl border-2 border-solid bg-slate-100 border-[color:var(--Primary-Bright-Teal,#0C8188)] max-md:flex-wrap max-md:max-w-full"
+      >
+        <div
+          class="flex flex-col justify-center self-start p-1.5 aspect-square fill-slate-100 stroke-[1px] stroke-cyan-700"
+        >
+          <div class="shrink-0 h-2 rounded-full"></div>
+        </div>
+        <div
+          class="flex flex-col flex-1 justify-center text-lg leading-6 max-md:max-w-full"
+        >
+          <div class="font-bold text-zinc-800 max-md:max-w-full">
+            Specify individual shares among applicants
+          </div>
+          <div class="mt-2 text-zinc-600 max-md:max-w-full">
+            Co-owners can hold varying amounts of shares, totalling 100 shares.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col px-6 py-7 mt-6 text-lg bg-white max-md:px-5 max-md:max-w-full"
+    >
+      <div class="text-2xl font-bold leading-7 text-zinc-800 max-md:max-w-full">
+        Allocation of shares
+      </div>
+      <div class="mt-2 leading-[133%] text-zinc-600 max-md:max-w-full">
+        Each applicant must have at least 1 share. Total share must add up to
+        100.
+      </div>
+      <div
+        class="flex gap-5 justify-between mt-6 max-md:flex-wrap max-md:max-w-full"
+      >
+        <div
+          class="grow my-auto font-bold leading-[133%] text-zinc-800 max-md:max-w-full"
+        >
+          Fang De Ming
+        </div>
+        <div
+          class="justify-center px-5 py-3 leading-6 text-right whitespace-nowrap bg-white rounded-lg border border-solid border-[color:var(--Primary-Bright-Teal,#0C8188)] text-neutral-400 max-md:pl-5"
+        >
+          70
+          <span class="text-base font-medium leading-6 text-neutral-400">
+            / 100
+          </span>
+        </div>
+      </div>
+      <div
+        class="flex gap-5 justify-between mt-6 max-md:flex-wrap max-md:max-w-full"
+      >
+        <div
+          class="grow my-auto font-bold leading-[133%] text-zinc-800 max-md:max-w-full"
+        >
+          Siti Ameerah Binte Muhamad
+        </div>
+        <div
+          class="justify-center px-5 py-3 leading-6 text-right whitespace-nowrap bg-white rounded-lg border border-solid border-[color:var(--Primary-Bright-Teal,#0C8188)] text-neutral-400"
+        >
+          30
+          <span class="text-base font-medium leading-6 text-neutral-400">
+            / 100
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col justify-center p-6 text-2xl font-bold leading-7 bg-neutral-100 text-zinc-800 max-md:px-5 max-md:max-w-full"
+    >
+      <div
+        class="flex gap-5 justify-between max-md:flex-wrap max-md:max-w-full"
+      >
+        <div class="grow max-md:max-w-full">Total Shares Allocated</div>
+        <div class="text-right whitespace-nowrap">100 / 100</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+</body>
+</html>

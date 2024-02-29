@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Financial editor demo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<!-- from node_modules -->
+<script src="node_modules/@material-tailwind/html/scripts/collapse.js"></script>
+<link rel="stylesheet" href="../font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+<style type="text/tailwindcss">
+  @layer utilities {
+    .card {
+  border-radius: 5px; /* Optional: Rounded corners */
+  margin: 2rem;
+    }
+  }
+  .font-cabin {
+  font-family: 'Cabin', sans-serif;
+}
+
+</style>
+
+</head>
+
+
+<body x-data = "manageInputs">
+
+    <div class="flex flex-col bg-zinc-300" >
+        <div
+          class="flex flex-col justify-center items-start px-16 py-0.5 w-full text-sm bg-zinc-100 max-md:px-5 max-md:max-w-full"
+        >
+          <div class="flex gap-1 ml-10 max-md:flex-wrap max-md:max-w-full">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/64f14eb5d320f305f8d9cf0bc0fe98accd7b4fbbe18437ee79a2310efd0b0a61?"
+              class="w-6 aspect-square"
+            />
+            <div class="flex-auto my-auto leading-[114%] text-zinc-700">
+              A Singapore Government Agency Website
+            </div>
+            <div class="flex-auto leading-6 text-blue-700 underline">
+              How to identify
+            </div>
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/034e6b9403ef837ed64ab57b13332550eec1defdb749b41fcc80fb4ba5187df8?"
+              class="my-auto w-4 aspect-square"
+            />
+          </div>
+        </div>
+        <div
+          class="flex gap-5 justify-between px-20 w-full bg-white max-md:flex-wrap max-md:px-5 max-md:max-w-full"
+        >
+          <div
+            class="flex gap-5 justify-between my-auto text-base font-medium leading-6 text-center text-zinc-800 max-md:flex-wrap max-md:max-w-full"
+          >
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/590145a8c9ee6f091f00fd63fbf140a85e023b3006b165d3e937208e5a4add7f?"
+              class="max-w-full aspect-[4.17] w-[200px]"
+            />
+            <div
+              class="flex gap-4 justify-center my-auto max-md:flex-wrap max-md:max-w-full"
+            >
+              <a class="text-right" href="index.html">Home</a>
+              <div class="flex-auto">My Flat Dashboard</div>
+              <div>Finding a Flat</div>
+              <div>My Profile</div>
+              <a href="v1.html">Calculator</a>
+            </div>
+          </div>
+          <div class="flex gap-2 justify-between">
+            <div
+              class="flex gap-2 justify-end py-8 text-sm font-medium leading-5 text-right text-zinc-800"
+            >
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/dbfeec5e8568e0717dea5e0c546bc08f232564ac74d87a188d903e471e3208d8?"
+                class="w-5 aspect-square"
+              />
+              <div>Fang De...</div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/996120d3a4e1bb0c23c8f1d2972d369ddc503bec759fed2e1ba2813a4a4063e1?"
+                class="my-auto w-3.5 aspect-square"
+              />
+            </div>
+            <div
+              class="flex flex-1 justify-center items-center px-3 py-7 bg-cyan-700"
+            >
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/c774455bd81293c71a52dbf6907ed08b3b672b09105eba6ce47c6b672d0ce022?"
+                class="w-6 aspect-square"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex gap-5 justify-between px-20 pt-6 pb-10 w-full font-bold bg-gray-200 max-md:flex-wrap max-md:px-5 max-md:max-w-full"
+        >
+          <div class="flex flex-col max-md:max-w-full">
+            <div
+              class="flex gap-0.5 text-base leading-6 text-cyan-700 whitespace-nowrap w-[52px]"
+            >
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/6f1ffaece47810bafa31c68ce781757805c7546ce250cb1ba5ca143300135fef?"
+                class="flex-1 shrink-0 my-auto w-full aspect-square"
+              />
+              <div class="grow">Back</div>
+            </div>
+            <div
+              class="mt-6 text-5xl leading-[56.16px] text-zinc-800 max-md:max-w-full max-md:text-4xl"
+            >
+              Prepare to Sign Agreement for Lease
+            </div>
+          </div>
+          <div
+            class="flex gap-2 justify-center self-start p-px mt-4 text-center text-white whitespace-nowrap"
+          >
+            <div
+              class="justify-center px-5 py-4 text-base leading-6 bg-cyan-700 rounded-none border border-solid shadow-sm aspect-[1.19] border-[color:var(--Neutral-0,#FFF)]"
+            >
+              A
+            </div>
+            <div
+              class="justify-center px-4 py-3.5 text-2xl leading-7 bg-cyan-700 rounded-none border border-solid shadow-sm aspect-[1.19] border-[color:var(--Neutral-0,#FFF)]"
+            >
+              A
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-center self-center w-full  bg-neutral-100 max-w-[1344px] max-md:max-w-full"
+          x-data="{selected: 'joint', tenancy_in_common: false, sum : 0, split_share_option : 'equal'}"
+        >
+          <div
+            class="flex justify-center items-center self-stretch px-16 py-6 font-bold text-center bg-white max-md:px-5 max-md:max-w-full"
+          >
+            <div
+              class="flex justify-center items-center px-16 max-w-full w-[896px] max-md:px-5"
+            >
+              <div class="flex gap-0 max-md:flex-wrap max-md:max-w-full">
+                <div class="flex flex-col flex-1">
+                  <div
+                    class="justify-items-center text-center w-16 h-16 text-3xl ml-2 mt-2 text-white whitespace-nowrap bg-cyan-700 rounded-[50%] aspect-square stroke-[4px] max-md:px-5"
+                  >
+                    <div class="mt-3">1</div>
+                  </div>
+                  <div class="mt-4 text-lg leading-6 text-cyan-700">
+                    Manner of Holding
+                  </div>
+                </div>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/a88c2c36e554b26d85445820343a64a9333c9bf783390789db5a65ff31a5cbd5?"
+                  class="self-start w-36 max-w-full aspect-[2.27]"
+                />
+                <div class="flex flex-col flex-1 text-neutral-400">
+                  <div
+                    class="justify-center px-7 py-6 text-3xl leading-8 whitespace-nowrap rounded-full aspect-square stroke-[4px] max-md:px-5"
+                  >
+                    2
+                  </div>
+                  <div class="mt-2 text-lg leading-6">Financial Plan</div>
+                </div>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/a88c2c36e554b26d85445820343a64a9333c9bf783390789db5a65ff31a5cbd5?"
+                  class="self-start w-36 max-w-full aspect-[2.27]"
+                />
+                <div class="flex flex-col flex-1 text-neutral-400">
+                  <div
+                    class="justify-center px-6 py-6 text-3xl leading-8 whitespace-nowrap rounded-full aspect-square stroke-[4px] max-md:px-5"
+                  >
+                    3
+                  </div>
+                  <div class="mt-2 text-lg leading-6">CPF Payment</div>
+                </div>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/a88c2c36e554b26d85445820343a64a9333c9bf783390789db5a65ff31a5cbd5?"
+                  class="self-start w-36 max-w-full aspect-[2.27]"
+                />
+                <div class="flex flex-col flex-1 text-neutral-400">
+                  <div
+                    class="justify-center px-6 py-6 text-3xl leading-8 whitespace-nowrap rounded-full aspect-square stroke-[4px] max-md:px-5"
+                  >
+                    4
+                  </div>
+                  <div class="mt-2 text-lg leading-6">Endorse documents</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col mt-12 max-w-full rounded-2xl border-solid border-[3px] border-[color:var(--Primary-500,#0C8188)] w-[824px] max-md:mt-10"
+          >
+            <div
+              class="justify-center px-6 py-4 text-2xl font-bold leading-7 text-white bg-cyan-700 rounded-2xl max-md:px-5 max-md:max-w-full"
+            >
+              Manner of Holding
+            </div>
+            <div
+              class="flex flex-col p-6 rounded-none bg-slate-100 max-md:px-5 max-md:max-w-full"
+            >
+              <div class="text-lg leading-6 text-zinc-800 max-md:max-w-full">
+                The manner of holding is the type of property ownership for the flat.
+                It determines how the property will be passed on if one of the owners
+                passes away.
+              </div>
+              <div
+                class="self-start mt-6 text-lg font-bold leading-6 text-cyan-700 underline whitespace-nowrap"
+              >
+                Read more on Manner of Holding
+              </div>
+              <div
+                class="flex flex-col p-6 mt-6 bg-white rounded-2xl shadow max-md:px-5 max-md:max-w-full"
+              >
+                <div
+                  class="text-2xl font-bold leading-7 text-zinc-800 max-md:max-w-full"
+                >
+                  What is your preferred holding type?
+                </div>
+                <div class="mt-6 max-md:max-w-full" >
+                  <div class="flex gap-5 max-md:flex-col max-md:gap-0 max-md:">
+                    <div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full cursor-pointer">
+                      <div
+                        class="flex flex-col grow self-stretch px-6 pt-6 pb-12 mx-auto w-full rounded-2xl border-2 border-solid shadow-sm max-md:px-5 max-md:mt-4"
+                        :class = "{'bg-slate-100 border-[color:var(--Primary-Bright-Teal,#0C8188)]' : selected === 'joint', 'bg-white border border-solid border-[color:var(--Neutral-Dark-grey,#575757)' : selected !== 'joint'}"
+                        @click = "selected = 'joint'"
+                      >
+                        <div class="flex gap-4 justify-between">
+                          <div
+                            class="flex flex-col justify-center p-1.5 my-auto aspect-square fill-slate-100 stroke-[1px] stroke-cyan-700"
+                          >
+                            <div class="shrink-0 h-2 rounded-full"></div>
+                          </div>
+                          <div
+                            class="grow text-2xl font-bold leading-7 whitespace-nowrap text-zinc-800"
+                          >
+                            Joint Tenancy
+                          </div>
+                        </div>
+                        <div class="mt-4 text-lg leading-6 text-zinc-800">
+                          The co-owners have an equal shares in the flat.
+                        </div>
+                        <div
+                          class="mt-4 text-base font-medium leading-6 text-zinc-600"
+                        >
+                          The property automatically goes to the remaining co-owner(s)
+                          if you pass on, regardless of whether you have a will or not
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full cursor-pointer">
+                      <div
+                        class="flex flex-col grow self-stretch px-6 pt-6 pb-12 mx-auto w-full rounded-2xl border-2 border-solid shadow-sm max-md:px-5 max-md:mt-4"
+                        :class = "{'bg-slate-100 border-[color:var(--Primary-Bright-Teal,#0C8188)]' : selected === 'common', 'bg-white border border-solid border-[color:var(--Neutral-Dark-grey,#575757)' : selected !== 'common'}"
+                        @click = "selected = 'common'"
+                      >
+                        
+                          <!-- <div
+                            class="my-auto w-5 h-5 bg-white rounded-xl border border-solid border-[color:var(--Neutral-Dark-grey,#575757)]"
+                          ></div> -->
+                        <div
+                          class="grow text-2xl font-bold leading-7 whitespace-nowrap text-zinc-800 text-center"
+                        >
+                          Tenancy-in-Common
+                        </div>
+                        <div class="mt-4 text-lg leading-6">
+                          Each co-owner holds a separate and distinct shares in the
+                          flat.
+                        </div>
+                        <div
+                          class="mt-4 text-base font-medium leading-6 text-zinc-600"
+                        >
+                          The property does not go automatically to the remaining
+                          co-owner(s) if you pass on
+                          <br />
+                          You can decide how you want to distribute your share of the
+                          property in your will
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col px-6 py-7 mt-6 bg-white max-md:px-5 max-md:max-w-full"
+                  x-show="selected === 'common'"
+                  x-data = "{}"
+                >
+                  <div class="text-2xl font-bold leading-7 text-zinc-800 max-md:max-w-full">
+                    How do you want to split your shares?
+                  </div>
+                  <div class="mt-2 text-lg leading-6 text-zinc-600 max-md:max-w-full">
+                    Indicate how many shares each applicant would hold, under
+                    tenancy-in-commons.
+                  </div>
+                  <div
+                    class="flex gap-4 justify-between p-4 mt-4 rounded-2xl border-2 border-solid max-md:flex-wrap max-md:max-w-full cursor-pointer"
+                    :class = "{'bg-slate-100 border-[color:var(--Primary-Bright-Teal,#0C8188)]' : split_share_option === 'equal', 'bg-white border-[color:var(--Neutral-Light-Grey,#EBEBEB)]' : split_share_option === 'custom'}"
+                    @click = "split_share_option = 'equal';"
+                  >
+                  <div
+                    class="flex flex-col justify-center self-start p-1.5 aspect-square fill-slate-100 stroke-[1px] stroke-cyan-700"
+                  >
+                  <div class="shrink-0 h-2 rounded-full"></div>
+                  </div>
+                    <div class="flex flex-col flex-1 justify-center text-lg leading-6 max-md:max-w-full">
+                      <div class="font-bold text-zinc-800 max-md:max-w-full">
+                        Equal distribution among applicants
+                      </div>
+                      <div class= "mt-2 text-zinc-600 max-md:max-w-full">
+                        Each co-owner receives an equal share, with each having 1 part of
+                        the shares.
+                      </div>
+                  </div>
+                </div>
+                <div
+                  class="flex gap-4 justify-between p-4 mt-4 rounded-2xl border-2 border-solid max-md:flex-wrap max-md:max-w-full cursor-pointer"
+                  :class = "{'bg-slate-100 border-[color:var(--Primary-Bright-Teal,#0C8188)]' : split_share_option === 'custom', 'bg-white border-[color:var(--Neutral-Light-Grey,#EBEBEB)]' : split_share_option === 'equal'}"
+                  @click = "split_share_option = 'custom';"
+                >
+                  <div
+                    class="flex flex-col justify-center self-start p-1.5 aspect-square fill-slate-100 stroke-[1px] stroke-cyan-700"
+                  >
+                    <div class="shrink-0 h-2 rounded-full"></div>
+                  </div>
+                  <div
+                    class="flex flex-col flex-1 justify-center text-lg leading-6 max-md:max-w-full"
+                  >
+                    <div class="font-bold text-zinc-800 max-md:max-w-full">
+                      Specify individual shares among applicants
+                    </div>
+                    <div class="mt-2 text-zinc-600 max-md:max-w-full">
+                      Co-owners can hold varying amounts of shares, totalling 100 shares.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div
+                class="flex flex-col px-6 py-7 mt-6 text-lg bg-white max-md:px-5 max-md:max-w-full"
+                x-show = "selected === 'common'"
+                
+              >
+                <div class="text-2xl font-bold leading-7 text-zinc-800 max-md:max-w-full">
+                  Allocation of shares
+                </div>
+                <div class="mt-2 leading-[133%] text-zinc-600 max-md:max-w-full">
+                  Each applicant must have at least 1 share. Total share must add up to
+                  100.
+                </div>
+                <div
+                  class="flex gap-5 justify-between mt-6 max-md:flex-wrap max-md:max-w-full"
+                >
+                  <div
+                    class="grow my-auto font-bold leading-[133%] text-zinc-800 max-md:max-w-full"
+                  >
+                    Fang De Ming
+                  </div>
+                  <span
+                    class = "font-bold text-zinc-800 my-auto  max-md:max-w-full"
+                    x-show="split_share_option === 'equal'"
+                  >
+                    1 / 4
+                  </span>
+                  <input
+                    x-show="split_share_option === 'custom'"
+                    onkeypress="return onlyNumberKey(event)"
+                    class="justify-center px-5 py-3 leading-6 text-right whitespace-nowrap bg-white rounded-lg border border-solid border-[color:var(--Primary-Bright-Teal,#0C8188)] text-neutral-400 w-[110px]"
+                    max = "100"
+                    min = "0"
+                    type = "text"
+                    value = "/ 100"
+                    id = "input1"
+                    @input = "updateInputValue('input1'); sum = getSumOfShares();"
+                    @focus = "clearInputValue('input1')"
+                  >
+                    
+                    
+                  </div>
+                
+                <div
+                  class="flex gap-5 justify-between mt-6 max-md:flex-wrap max-md:max-w-full"
+                >
+                  <div
+                    class="grow my-auto font-bold leading-[133%] text-zinc-800 max-md:max-w-full"
+                  >
+                    Tan Ah Ming John
+                  </div>
+                  <span
+                    class = "font-bold text-zinc-800 my-auto  max-md:max-w-full"
+                    x-show="split_share_option === 'equal'"
+                  >
+                    1 / 4
+                  </span>
+                  <input
+                    x-show="split_share_option === 'custom'"
+                    onkeypress="return onlyNumberKey(event)"
+                    class="justify-center px-5 py-3 leading-6 text-right whitespace-nowrap bg-white rounded-lg border border-solid border-[color:var(--Primary-Bright-Teal,#0C8188)] text-neutral-400 w-[110px]"
+                    max = "100"
+                    min = "0"
+                    type = "text"
+                    value = "/ 100"
+                    id = "input2"
+                    @input = "updateInputValue('input2'); sum = getSumOfShares();"
+                    @focus = "clearInputValue('input2')"
+                  >
+                    
+                    
+                </div>
+
+                <div
+                  class="flex gap-5 justify-between mt-6 max-md:flex-wrap max-md:max-w-full"
+                >
+                  <div
+                    class="grow my-auto font-bold leading-[133%] text-zinc-800 max-md:max-w-full"
+                  >
+                    Tan Si Ming Jeremia
+                  </div>
+                  <span
+                    class = "font-bold text-zinc-800 my-auto  max-md:max-w-full"
+                    x-show="split_share_option === 'equal'"
+                  >
+                    1 / 4
+                  </span>
+                  <input
+                    x-show="split_share_option === 'custom'"
+                    onkeypress="return onlyNumberKey(event)"
+                    class="justify-center px-5 py-3 leading-6 text-right whitespace-nowrap bg-white rounded-lg border border-solid border-[color:var(--Primary-Bright-Teal,#0C8188)] text-neutral-400 w-[110px]"
+                    max = "100"
+                    min = "0"
+                    type = "text"
+                    value = "/ 100"
+                    id = "input3"
+                    @input = "updateInputValue('input3'); sum = getSumOfShares();"
+                    @focus = "clearInputValue('input3')"
+                  >
+                    
+                    
+              </div>
+                
+                <div
+                  class="flex gap-5 justify-between mt-6 max-md:flex-wrap max-md:max-w-full"
+                >
+                  <div
+                    class="grow my-auto font-bold leading-[133%] text-zinc-800 max-md:max-w-full"
+                  >
+                    Siti Ameerah Binte Muhamad
+                  </div>
+                  <span
+                    class = "font-bold text-zinc-800 my-auto  max-md:max-w-full"
+                    x-show="split_share_option === 'equal'"
+                  >
+                    1 / 4
+                  </span>
+                  <input
+                    x-show = "split_share_option === 'custom'"
+                    onkeypress="return onlyNumberKey(event)"
+                    class="justify-center px-5 py-3 leading-6 text-right whitespace-nowrap bg-white rounded-lg border border-solid border-[color:var(--Primary-Bright-Teal,#0C8188)] text-neutral-400 w-[110px]"
+                    max = "100"
+                    min = "0"
+                    type = "text"
+                    value = "/ 100"
+                    id = "input4"
+                    @input = "updateInputValue('input4'); sum = getSumOfShares();"
+                    @focus = "clearInputValue('input4')"
+                  >
+                </div>
+
+                <div  id="errorDisplay" x-cloak x-show="error.state" class=" my-5 items-center flex justify-center w-full border-red bg-red-200 min-h-[60px]">
+                  <i class="fa fa-exclamation-circle mr-3" aria-hidden="true"></i>
+                  
+                  
+                  
+                  <span class="text-center" x-text="error.errorMessage"></span>
+              </div>
+
+              </div>
+              <div
+                class="flex flex-col justify-center p-6 text-2xl font-bold leading-7 bg-neutral-100 text-zinc-800 max-md:px-5 max-md:max-w-full"
+                x-show = "selected === 'common'"
+              >
+                <div
+                  class="flex gap-5 justify-between max-md:flex-wrap max-md:max-w-full"
+                  
+                >
+                  <div class="grow max-md:max-w-full">Total Shares Allocated</div>
+                  <div x-show = "split_share_option === 'custom'" class="text-right whitespace-nowrap"><span x-text="sum"></span> / 100</div>
+                  <div x-show = "split_share_option === 'equal'" class="text-right whitespace-nowrap">4/4</div>
+                </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+            id = "preselectOption"
+            class="flex flex-wrap gap-5 justify-between content-center mt-12 max-w-full text-base font-medium leading-6 text-center whitespace-nowrap w-[424px] max-md:mt-10"
+            >
+              <a
+                class="grow justify-center items-center px-16 py-3.5 text-cyan-700 bg-white rounded-xl border border-solid border-[color:var(--Primary-Bright-Teal,#0C8188)] max-md:px-5"
+                href="index.html"
+              >
+                Back
+              </a>
+              <button
+                class="grow justify-center items-center px-16 py-3.5 text-white bg-cyan-700 rounded-xl max-md:px-5"
+                @click = "redirectNext"
+              >
+                Next
+              </button>
+        </div>
+      </div>
+          </div>
+
+        
+        </div>
+          
+
+          
+
+        <div
+          class="flex flex-col items-center self-center py-12 pl-20 w-full text-base bg-neutral-100  max-md:pl-5 max-md:max-w-full"
+        >
+          <div
+            class="self-center max-w-full h-px border-t border-solid border-t-[color:var(--Primary-500,#0C8188)] w-[1084px]"
+          ></div>
+          <div
+            class="mt-12 text-2xl font-bold leading-7 text-zinc-800 max-md:mt-10 max-md:max-w-full"
+          >
+            Have any questions?
+          </div>
+          <div
+            class="flex gap-4 p-4 mt-4 max-w-full rounded-lg border border-solid bg-slate-100 border-[color:var(--Primary-500,#0C8188)] w-[600px] max-md:flex-wrap"
+          >
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/e73ca66829f467437eb1d38cbfb09374c0e6dd8d936e7e2186780335ed7dedce?"
+              class="my-auto w-6 aspect-square"
+            />
+            <div class="flex flex-col flex-1 max-md:max-w-full">
+              <div class="font-bold leading-[137.5%] text-zinc-800 max-md:max-w-full">
+                Open the Help Centre
+              </div>
+              <div class="mt-1 font-medium leading-6 text-zinc-600 max-md:max-w-full">
+                Open our Help Centre Panel to view FAQs related to your current
+                application step, to self-help.
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex gap-4 p-4 mt-2 mb-12 max-w-full rounded-lg border border-solid bg-slate-100 border-[color:var(--Primary-500,#0C8188)] w-[600px] max-md:flex-wrap max-md:mb-10"
+          >
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/f1fdeb7314ea188b6d9806a899b375a85e8d0925da6a2d834adc69005f66bd63?"
+              class="my-auto w-6 aspect-square fill-black"
+            />
+            <div class="flex flex-col flex-1 max-md:max-w-full">
+              <div class="font-bold leading-[137.5%] text-zinc-800 max-md:max-w-full">
+                Submit a Support Form
+              </div>
+              <div class="mt-1 font-medium leading-6 text-zinc-600 max-md:max-w-full">
+                After submission, our Support Team will get back to you within 3
+                working days via a follow-up call or email.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex gap-2 justify-between px-20 py-4 text-base font-bold leading-6 whitespace-nowrap shadow-sm bg-neutral-100 text-zinc-600 max-md:flex-wrap max-md:px-5 max-md:max-w-full"
+        >
+          <div class="flex gap-1 justify-between">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/2a9a76fc90e175e9d75b8297492eb9851dd474dbb8467e3d2931b96ae7d1219b?"
+              class="w-6 aspect-square"
+            />
+            <div class="grow">Get Help</div>
+          </div>
+          <div class="flex gap-1 justify-between">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/19ee95c2b79768d247ca2c11c314e0b512267ca9a0af3ee8192f22db91c562ef?"
+              class="w-6 aspect-square"
+            />
+            <div class="grow">Feedback</div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col px-20 py-12 w-full text-lg leading-6 text-white bg-zinc-800 max-md:px-5 max-md:max-w-full"
+        >
+          <div
+            class="mr-5 ml-3.5 text-3xl font-bold leading-8 max-md:mr-2.5 max-md:max-w-full"
+          >
+            Housing & Development Board
+          </div>
+          <div
+            class="flex gap-5 justify-between pl-20 mt-6 mr-5 ml-3.5 whitespace-nowrap max-md:flex-wrap max-md:pl-5 max-md:mr-2.5 max-md:max-w-full"
+          >
+            <div class="my-auto">Contact us</div>
+            <div class="my-auto">Feedback</div>
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/f136c15eb035af3058a0bd1c439d7de6e14e2d034a42d58e9ed6a27ef26d2273?"
+              class="w-px aspect-[0.04] stroke-[1px] stroke-neutral-400"
+            />
+            
+          </div>
+          <div
+            class="mt-6 mr-5 ml-3.5 leading-6 text-right max-md:mr-2.5 max-md:max-w-full"
+          >
+            Subscribe to HDB eAlert Service
+            <br />
+            <br />
+            Download Mobile @ HDB
+          </div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf4409b9a3066b972f2a99d4a9939d99aad58bf1e27aa97b2a3d0cf9982ca091?"
+            class="mx-3.5 mt-6 w-full stroke-[1px] stroke-neutral-400 max-md:mr-2.5 max-md:max-w-full"
+          />
+          <div
+            class="flex gap-5 justify-between mx-3.5 mt-6 mb-2.5 max-md:flex-wrap max-md:mr-2.5 max-md:max-w-full"
+          >
+            <div class="flex gap-2.5 max-md:flex-wrap max-md:max-w-full">
+              <div class="grow whitespace-nowrap">Report Vulnerability</div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/46e3d9bddc52bb1549e7350fc8a9a407fbcb74aa1110b1550c016785021c33d7?"
+                class="self-start aspect-[1.08] w-[15px]"
+              />
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+                class="my-auto w-px aspect-[0.05] stroke-[1px] stroke-neutral-400"
+              />
+              <div class="flex-auto">Privacy Statement</div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+                class="my-auto w-px aspect-[0.05] stroke-[1px] stroke-neutral-400"
+              />
+              <div class="flex-auto">Terms of Use</div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+                class="my-auto w-px aspect-[0.05] stroke-[1px] stroke-neutral-400"
+              />
+              <div>Sitemap</div>
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+                class="my-auto w-px aspect-[0.05] stroke-[1px] stroke-neutral-400"
+              />
+              <div class="flex-auto">Site Requirements</div>
+            </div>
+            <div class="grow whitespace-nowrap">© 2023, Government of Singapore</div>
+          </div>
+        </div>
+      </div>
+      
+<script>
+
+    const inputIDs = ['input1', 'input2', 'input3', 'input4'];
+
+    function onlyNumberKey(evt) {
+      // Only ASCII charactar in that range allowed
+      var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+      if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+          return false;
+      return true;
+    }
+    function debounce(func, delay) {
+      let debounceTimer;
+      return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => func.apply(context, args), delay);
+      };
+    } 
+
+    
+
+    function redirectNext(selected) {
+        window.location.href = "financial_plan.html"
+    }
+
+    
+
+    function manageInputs() {
+      let error = Alpine.reactive({'state': false});
+
+      function alertError(message) {
+            error['state'] = true;
+            error['errorMessage'] = message;
+      }
+
+      function getSumOfShares() {
+        let sum = 0;
+        let errorDetected = false;
+        for (inputID of inputIDs) {
+          let inputField = document.getElementById(inputID);
+          let value = inputField.value.replace('/ 100', '');
+          if (value == '') {
+            value = 0;
+            alertError('You must allocate shares to all applicants.');
+            errorDetected = true;
+          }
+          console.log(typeof(value));
+          sum += parseInt(value);
+          console.log(Number(sum));
+          console.log(typeof(sum));
+        }
+
+        if (sum > 100) {
+          alertError('Total shares combined cannot be more than 100.');
+          errorDetected = true;
+        } else if (sum < 100) {
+          alertError("Total shares combined must add up to 100.");
+          errorDetected = true;
+        } 
+
+        if(!errorDetected) {
+          error['state'] = false;
+        }
+        console.log(sum);
+        return sum;
+        
+      }
+      
+      function updateInputValue(inputID) {
+        const inputField = document.getElementById(inputID);
+        const value = inputField.value.replaceAll('/ 100', '');
+        inputField.value = `${value} / 100`;
+        console.log(value);
+        sum = getSumOfShares();
+      }
+
+      function clearInputValue(inputID) {
+        const inputField = document.getElementById(inputID);
+        inputField.value = '';
+        
+      }
+      const debouncedUpdateInputValue = debounce(updateInputValue, 1000);
+      
+      return {
+        updateInputValue: debouncedUpdateInputValue,
+        clearInputValue: clearInputValue,
+        getSumOfShares: getSumOfShares,
+        error
+      }
+    }
+    
+    
+
+    
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Financial editor demo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+<!-- from node_modules -->
+<script src="node_modules/@material-tailwind/html/scripts/collapse.js"></script>
+<link rel="stylesheet" href="../font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+<style type="text/tailwindcss">
+  @layer utilities {
+    .card {
+  border-radius: 5px; /* Optional: Rounded corners */
+  margin: 2rem;
+    }
+  }
+  .font-cabin {
+  font-family: 'Cabin', sans-serif;
+}
+
+</style>
+
+</head>
+
+
+<body x-data="handler()">
+  <div x-data="{doc_1_viewed: false, doc_2_viewed: false}" class="flex flex-col bg-zinc-300">
+    <div
+      class="flex flex-col justify-center items-start px-16 py-0.5 w-full text-sm bg-zinc-100 max-md:px-5 max-md:max-w-full"
+    >
+      <div class="flex gap-1 ml-10 max-md:flex-wrap max-md:max-w-full">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/22d42cdd2824f65e1e6aa68e9865c03e70fa237418790446d0ef17825ef6031d?"
+          class="w-6 aspect-square"
+        />
+        <div class="flex-auto my-auto leading-[114%] text-zinc-700">
+          A Singapore Government Agency Website
+        </div>
+        <div class="flex-auto leading-6 text-blue-700 underline">
+          How to identify
+        </div>
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/034e6b9403ef837ed64ab57b13332550eec1defdb749b41fcc80fb4ba5187df8?"
+          class="my-auto w-4 aspect-square"
+        />
+      </div>
+    </div>
+    <div
+      class="flex gap-5 justify-between px-20 w-full bg-white max-md:flex-wrap max-md:px-5 max-md:max-w-full"
+    >
+      <div
+        class="flex gap-5 justify-between my-auto text-base font-medium leading-6 text-center text-zinc-800 max-md:flex-wrap max-md:max-w-full"
+      >
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/48d91cf84a29f5fac56c17719c89f8e5487437d8e44c65383426172494e0f06e?"
+          class="max-w-full aspect-[4.17] w-[200px]"
+        />
+        <div
+          class="flex gap-4 justify-center my-auto max-md:flex-wrap max-md:max-w-full"
+        >
+          <a href="index.html" class="text-right">Home</a>
+          <div class="flex-auto">My Flat Dashboard</div>
+          <div>Finding a Flat</div>
+          <div>My Profile</div>
+          <a href="v1.html">Calculator</a>
+          
+        </div>
+      </div>
+      <div class="flex justify-center items-center px-3 py-7 bg-cyan-700">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/c774455bd81293c71a52dbf6907ed08b3b672b09105eba6ce47c6b672d0ce022?"
+          class="w-6 aspect-square"
+        />
+      </div>
+    </div>
+    <div
+      class="flex gap-5 justify-between px-20 pt-6 pb-10 w-full font-bold bg-gray-200 max-md:flex-wrap max-md:px-5 max-md:max-w-full"
+    >
+      <div class="flex flex-col max-md:max-w-full">
+        <div
+          class="flex gap-0.5 text-base leading-6 text-cyan-700 whitespace-nowrap w-[51px]"
+        >
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/6f1ffaece47810bafa31c68ce781757805c7546ce250cb1ba5ca143300135fef?"
+            class="flex-1 shrink-0 my-auto w-full aspect-square"
+          />
+          <div class="grow">Back</div>
+        </div>
+        <div
+          class="mt-6 text-5xl leading-[56.16px] text-zinc-800 max-md:max-w-full max-md:text-4xl"
+        >
+          Prepare to Sign Agreement for Lease
+        </div>
+      </div>
+      <div
+        class="flex gap-2 justify-center self-start p-px mt-4 text-center text-white whitespace-nowrap"
+      >
+        <div
+          class="justify-center px-5 py-4 text-base leading-6 bg-cyan-700 rounded-none border border-solid shadow-sm aspect-[1.19] border-[color:var(--Neutral-0,#FFF)]"
+        >
+          A
+        </div>
+        <div
+          class="justify-center px-4 py-3.5 text-2xl leading-7 bg-cyan-700 rounded-none border border-solid shadow-sm aspect-[1.19] border-[color:var(--Neutral-0,#FFF)]"
+        >
+          A
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col items-center self-center w-full rounded-3xl bg-neutral-100 max-w-[1344px] max-md:max-w-full"
+    >
+      <div
+        class="flex justify-center items-center self-stretch px-16 py-6 font-bold text-center bg-white max-md:px-5 max-md:max-w-full"
+      >
+        <div class="flex gap-0 justify-center max-md:flex-wrap max-md:max-w-full">
+          <div class="flex flex-col flex-1 text-lg leading-6 text-cyan-700">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/27aac27e1a47705d50dd2c79fd3671065c2ac3db9e97cccf8c2d7e738d5dd44b?"
+              class="self-center w-16 aspect-square"
+            />
+            <div class="mt-2">Manner of Holding</div>
+          </div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a88c2c36e554b26d85445820343a64a9333c9bf783390789db5a65ff31a5cbd5?"
+            class="self-start w-36 max-w-full aspect-[2.27]"
+          />
+          <div class="flex flex-col flex-1 text-lg leading-6 text-cyan-700">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/27aac27e1a47705d50dd2c79fd3671065c2ac3db9e97cccf8c2d7e738d5dd44b?"
+              class="self-center w-16 aspect-square"
+            />
+            <div class="mt-2">Financial Plan</div>
+          </div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a88c2c36e554b26d85445820343a64a9333c9bf783390789db5a65ff31a5cbd5?"
+            class="self-start w-36 max-w-full aspect-[2.27]"
+          />
+          <div class="flex flex-col flex-1 text-lg leading-6 text-cyan-700">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/27aac27e1a47705d50dd2c79fd3671065c2ac3db9e97cccf8c2d7e738d5dd44b?"
+              class="self-center w-16 aspect-square"
+            />
+            <div class="mt-2">CPF Payment</div>
+          </div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a88c2c36e554b26d85445820343a64a9333c9bf783390789db5a65ff31a5cbd5?"
+            class="self-start w-36 max-w-full aspect-[2.27]"
+          />
+          <div class="flex flex-col flex-1">
+            <div
+              class="justify-items-center text-center w-16 h-16 text-3xl ml-9 text-white whitespace-nowrap bg-cyan-700 rounded-[50%] aspect-square stroke-[4px] max-md:px-5"
+            >
+              <div class="mt-3">4</div>
+            </div>
+            <div class="mt-2 text-lg leading-6 text-cyan-700">
+              Endorse documents
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col px-6 py-7 mt-12 max-w-full bg-white rounded-2xl shadow-sm w-[824px] max-md:px-5 max-md:mt-10"
+      >
+        <div class="text-2xl font-bold leading-7 text-zinc-800 max-md:max-w-full">
+          Flat Documents
+        </div>
+        <div class="mt-2 text-lg leading-6 text-zinc-800 max-md:max-w-full">
+          View the following documents to endorse them.
+        </div>
+        <div
+          class="shrink-0 mt-4 h-px border-t border-solid border-t-[color:var(--Primary-500,#0C8188)] max-md:max-w-full"
+        ></div>
+        <div
+          class="flex gap-4 justify-center items-start p-4 mt-4 bg-white rounded-2xl border-2 border-solid border-[color:var(--Neutral-Light-Grey,#EBEBEB)] max-md:flex-wrap max-md:max-w-full"
+        >
+          <img
+            x-show="!doc_1_viewed"
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/7fb2e099b9d7596ac10aec8c30b57d3c100e2ae26c40401e23c56aeca0e81155?"
+            class="w-6 aspect-square"
+          />
+          <svg x-show="doc_1_viewed" xmlns="http://www.w3.org/2000/svg" class="w-6 fill-green-600" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg>
+          <div
+            class="flex flex-col flex-1 justify-center self-stretch text-lg max-md:max-w-full"
+          >
+            <div class="font-bold leading-[133%] text-zinc-800 max-md:max-w-full">
+              Memorandum of Lease
+            </div>
+            <div class="mt-2 leading-6 text-zinc-600 max-md:max-w-full">
+              Terms and conditions for buying a HDB flat. Find out what you can
+              and cannot do with your flat in terms of renovation and maintenance.
+            </div>
+          </div>
+          <button
+            x-show="!doc_1_viewed"
+            class="justify-center items-center px-16 py-3.5 text-base font-medium leading-6 text-center text-white whitespace-nowrap bg-cyan-700 rounded-xl max-md:px-5"
+            @click = "doc_1_viewed = viewDoc1();"
+          >
+            View
+          </button>
+          <button
+            x-show="doc_1_viewed"
+            class="justify-center items-center px-10 py-3.5 text-base font-medium leading-6 text-center text-cyan-700 whitespace-nowrap bg-white border border-cyan-700 border-solid rounded-xl "
+            @click = "doc_1_viewed = viewDoc1();"
+          >
+            View Again
+          </button>
+        </div>
+
+        <div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="Doc_1" style="display: none;">
+          <div class="relative top-20 mx-auto p-5 border w-180 shadow-lg rounded-md bg-white">
+              <div class="mt-3 text-center flex flex-col items-center">
+                  <h3 class="text-lg leading-6 font-medium text-gray-900">Modal Title</h3>
+                  <div class="mt-2 px-7 py-3 ">
+                      <iframe src="demopdf.pdf" width="800" height="500" class="overflow-y-auto self-center justify-center"></iframe>
+                  </div>
+                  <div class="items-center px-4 py-3">
+                      <button @click="closeDoc1" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 transition duration-150">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="Doc_2" style="display: none;">
+        <div class="relative top-20 mx-auto p-5 border w-180 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center flex flex-col items-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Modal Title</h3>
+                <div class="mt-2 px-7 py-3 ">
+                    <iframe src="demopdf.pdf" width="800" height="500" class="overflow-y-auto self-center justify-center"></iframe>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button @click="closeDoc2" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700 transition duration-150">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div
+          class="flex gap-4 justify-center items-start p-4 mt-4 bg-white rounded-2xl border-2 border-solid border-[color:var(--Neutral-Light-Grey,#EBEBEB)] max-md:flex-wrap max-md:max-w-full"
+        >
+        <img
+        x-show="!doc_2_viewed"
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/7fb2e099b9d7596ac10aec8c30b57d3c100e2ae26c40401e23c56aeca0e81155?"
+        class="w-6 aspect-square"
+        />
+        <svg x-show="doc_2_viewed" xmlns="http://www.w3.org/2000/svg" class="w-6 fill-green-600" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg>
+          <div
+            class="flex flex-col flex-1 justify-center self-stretch text-lg max-md:max-w-full"
+          >
+            <div class="font-bold leading-[133%] text-zinc-800 max-md:max-w-full">
+              Draft Lease in Escrow
+            </div>
+            <div class="mt-2 leading-6 text-zinc-600 max-md:max-w-full">
+              A sample of the strata title to your HDB flat. The Lease in Escrow
+              will be lodged with SLA after you collect your keys.
+            </div>
+          </div>
+          <button
+            x-show="!doc_2_viewed"
+            class="justify-center items-center px-16 py-3.5 text-base font-medium leading-6 text-center text-white whitespace-nowrap bg-cyan-700 rounded-xl max-md:px-5"
+            @click = "doc_2_viewed = viewDoc2();"
+          >
+            View
+          </button>
+          <button
+            x-show="doc_2_viewed"
+            class="justify-center items-center px-10 py-3.5 text-base font-medium leading-6 text-center text-cyan-700 whitespace-nowrap bg-white border border-cyan-700 border-solid rounded-xl "
+            @click = "doc_2_viewed = viewDoc2();"
+          >
+            View Again
+          </button>
+        </div>
+      </div>
+      <div
+        class="justify-center  mt-8 max-w-full text-2xl font-bold leading-7 whitespace-nowrap border border-2 border-cyan-700 rounded-2xl text-white w-[824px] max-md:px-5 max-md:max-w-full"
+        
+      >
+        <div class=" px-6 py-4 rounded-t-2xl w-full bg-cyan-700 ">
+          Acknowledgement
+        </div>
+        
+      
+      <div
+        class="justify-center px-6 py-7 max-w-full text-lg leading-6 text-black bg-slate-200 rounded-b-2xl w-[824px] max-md:px-5 max-md:max-w-full "
+        
+      >
+        
+        <div class="p-5 border rounded-2xl border-solid bg-white w-full">
+          <label class="inline-flex items-center">
+            <input id = "TNC_checkbox" type="checkbox" class="form-checkbox h-5 w-5 text-cyan-700 "><span class="ml-2 text-gray-700 font-bold">I, Fang De Ming (324F), have read and agree to the terms and conditions.</span>
+          </label>
+        </div>
+      </div>
+      </div>
+
+      <div  id="errorDisplay" x-cloak x-show="error.state" class=" my-5 items-center flex justify-center w-[824px] border-red bg-red-200 min-h-[60px]">
+        <i class="fa fa-exclamation-circle mr-3" aria-hidden="true"></i>
+        
+        
+        
+        <span class="text-center" x-text="error.errorMessage"></span>
+      </div>
+
+      <div
+        class="flex flex-wrap gap-5 justify-between content-center mt-12 max-w-full text-base font-medium leading-6 text-center whitespace-nowrap w-[424px] max-md:mt-10"
+      >
+        <a
+          class="grow justify-center items-center px-16 py-3.5 text-cyan-700 bg-white rounded-xl border border-solid border-[color:var(--Primary-Bright-Teal,#0C8188)] max-md:px-5"
+          href="CPF_payment.html"
+        >
+          Back
+        </a>
+        <button
+          class="grow justify-center items-center px-16 py-3.5 text-white bg-cyan-700 rounded-xl max-md:px-5"
+          @click = "redirectNext(doc_1_viewed, doc_2_viewed); console.log(error)"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+    <div
+      class="flex flex-col items-center self-center py-12 pl-20 w-full text-base bg-neutral-100 max-w-[1344px] max-md:pl-5 max-md:max-w-full"
+    >
+      <div
+        class="self-end max-w-full h-px border-t border-solid border-t-[color:var(--Primary-500,#0C8188)] w-[1084px]"
+      ></div>
+      <div
+        class="mt-12 text-2xl font-bold leading-7 text-zinc-800 max-md:mt-10 max-md:max-w-full"
+      >
+        Have any questions?
+      </div>
+      <div
+        class="flex gap-4 p-4 mt-4 max-w-full rounded-lg border border-solid bg-slate-100 border-[color:var(--Primary-500,#0C8188)] w-[600px] max-md:flex-wrap"
+      >
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e73ca66829f467437eb1d38cbfb09374c0e6dd8d936e7e2186780335ed7dedce?"
+          class="my-auto w-6 aspect-square"
+        />
+        <div class="flex flex-col flex-1 max-md:max-w-full">
+          <div class="font-bold leading-[137.5%] text-zinc-800 max-md:max-w-full">
+            Open the Help Centre
+          </div>
+          <div class="mt-1 font-medium leading-6 text-zinc-600 max-md:max-w-full">
+            Open our Help Centre Panel to view FAQs related to your current
+            application step, to self-help.
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex gap-4 p-4 mt-2 mb-12 max-w-full rounded-lg border border-solid bg-slate-100 border-[color:var(--Primary-500,#0C8188)] w-[600px] max-md:flex-wrap max-md:mb-10"
+      >
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/f1fdeb7314ea188b6d9806a899b375a85e8d0925da6a2d834adc69005f66bd63?"
+          class="my-auto w-6 aspect-square fill-black"
+        />
+        <div class="flex flex-col flex-1 max-md:max-w-full">
+          <div class="font-bold leading-[137.5%] text-zinc-800 max-md:max-w-full">
+            Submit a Support Form
+          </div>
+          <div class="mt-1 font-medium leading-6 text-zinc-600 max-md:max-w-full">
+            After submission, our Support Team will get back to you within 3
+            working days via a follow-up call or email.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex gap-2 justify-between px-20 py-4 text-base font-bold leading-6 whitespace-nowrap shadow-sm bg-neutral-100 text-zinc-600 max-md:flex-wrap max-md:px-5 max-md:max-w-full"
+    >
+      <div class="flex gap-1 justify-between">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/2a9a76fc90e175e9d75b8297492eb9851dd474dbb8467e3d2931b96ae7d1219b?"
+          class="w-6 aspect-square"
+        />
+        <div class="grow">Get Help</div>
+      </div>
+      <div class="flex gap-1 justify-between">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/19ee95c2b79768d247ca2c11c314e0b512267ca9a0af3ee8192f22db91c562ef?"
+          class="w-6 aspect-square"
+        />
+        <div class="grow">Feedback</div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col px-20 py-12 w-full text-lg leading-6 text-white bg-zinc-800 max-md:px-5 max-md:max-w-full"
+    >
+      <div
+        class="mr-5 ml-3.5 text-3xl font-bold leading-8 max-md:mr-2.5 max-md:max-w-full"
+      >
+        Housing & Development Board
+      </div>
+      <div
+        class="flex gap-5 justify-between pl-20 mt-6 mr-5 ml-3.5 whitespace-nowrap max-md:flex-wrap max-md:pl-5 max-md:mr-2.5 max-md:max-w-full"
+      >
+        <div class="my-auto">Contact us</div>
+        <div class="my-auto">Feedback</div>
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/f136c15eb035af3058a0bd1c439d7de6e14e2d034a42d58e9ed6a27ef26d2273?"
+          class="w-px aspect-[0.04] stroke-[1px] stroke-neutral-400"
+        />
+        
+      </div>
+      <div
+        class="mt-6 mr-5 ml-3.5 leading-6 text-right max-md:mr-2.5 max-md:max-w-full"
+      >
+        Subscribe to HDB eAlert Service
+        <br />
+        <br />
+        Download Mobile @ HDB
+      </div>
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf4409b9a3066b972f2a99d4a9939d99aad58bf1e27aa97b2a3d0cf9982ca091?"
+        class="mx-3.5 mt-6 w-full stroke-[1px] stroke-neutral-400 max-md:mr-2.5 max-md:max-w-full"
+      />
+      <div
+        class="flex gap-5 justify-between mx-3.5 mt-6 mb-2.5 max-md:flex-wrap max-md:mr-2.5 max-md:max-w-full"
+      >
+        <div class="flex gap-2.5 max-md:flex-wrap max-md:max-w-full">
+          <div class="grow whitespace-nowrap">Report Vulnerability</div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/e610ff94c287ad845622a1c56d17fa5091a580e39aee586eaaf84d9ab131b6fa?"
+            class="self-start aspect-[1.08] w-[15px]"
+          />
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+            class="my-auto w-px aspect-[0.05] stroke-[1px] stroke-neutral-400"
+          />
+          <div class="flex-auto">Privacy Statement</div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+            class="my-auto w-px aspect-[0.05] stroke-[1px] stroke-neutral-400"
+          />
+          <div class="flex-auto">Terms of Use</div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+            class="my-auto w-px aspect-[0.05] stroke-[1px] stroke-neutral-400"
+          />
+          <div>Sitemap</div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/10f48174e2973665ed204a6916fd0091aa8f3490593c6a78199d9f56a25a2887?"
+            class="my-auto w-px aspect-[0.05] stroke-[1px] stroke-neutral-400"
+          />
+          <div class="flex-auto">Site Requirements</div>
+        </div>
+        <div class="grow whitespace-nowrap">© 2023, Government of Singapore</div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+
+    function handler() {
+      let error = Alpine.reactive({'state': false})
+
+      function alertError(error,message) {
+          error['state'] = true;
+          error['errorMessage'] = message;
+      }
+
+      function redirectNext(doc_1_viewed, doc_2_viewed) {
+        const tnc = document.getElementById('TNC_checkbox')
+        if(tnc.checked){
+          if(doc_1_viewed && doc_2_viewed) {
+            window.location.href = "index.html";
+          } else {
+            alertError(error,'You have not reviewed all documents.');
+          }
+        } else {
+          alertError(error,'Please complete the acknowledgement above.')
+        }
+      }
+      function viewDoc1() {
+        const doc_1 = document.getElementById('Doc_1');
+        doc_1.style.display = 'block';
+        return true;
+      }
+
+      function closeDoc1() {
+        const doc_1 = document.getElementById('Doc_1');
+        doc_1.style.display = 'none';
+      }
+
+      function viewDoc2() {
+        const doc_2 = document.getElementById('Doc_2');
+        doc_2.style.display = 'block';
+        return true;
+      }
+
+      function closeDoc2() {
+        const doc_2 = document.getElementById('Doc_2');
+        doc_2.style.display = 'none';
+      }
+
+      return {
+        error,
+        redirectNext: redirectNext,
+        viewDoc1: viewDoc1,
+        closeDoc1: closeDoc1,
+        viewDoc2: viewDoc2,
+        closeDoc2: closeDoc2
+      }
+    }
+    
+
+    function error(){
+      
+      
+      return {
+        error
+      };
+    }
+
+    
+  </script>
+  
+</body>
+</html>
+
+
+
+
+
